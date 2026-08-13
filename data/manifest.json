@@ -1,0 +1,124 @@
+{
+  "manifestVersion": 1,
+  "generatedAt": "2026-08-12",
+  "activeSourcePolicy": {
+    "mode": "legacy-files",
+    "sourcesWin": "index.html inline data + screen_low_pe_q1_2025.js",
+    "processedRole": "read-only mirror until explicitly promoted",
+    "onDrift": "report-and-stop",
+    "automaticOverwrite": false
+  },
+  "policy": {
+    "rawIsImmutable": true,
+    "processedIsSnapshot": true,
+    "auditRowsAreRetained": true,
+    "writerLocalStorageIsExternal": true
+  },
+  "datasets": [
+    {
+      "datasetId": "etf-monthly",
+      "label": "ETF 월별 시계열",
+      "layers": {
+        "raw": {
+          "path": "data/raw/source-register.json",
+          "status": "missing",
+          "sourceFile": "Stock of ETFs.xlsx",
+          "sourceSheet": "STOCKHISTORY"
+        },
+        "processed": {
+          "canonicalPath": "data/processed/etf-monthly.json",
+          "granularity": "monthly",
+          "seriesCount": 26,
+          "monthCount": 333,
+          "rawRowCount": 6948,
+          "usableSeriesCount": 24,
+          "auditSeriesCount": 2,
+          "transform": "일별 Close의 월별 마지막 관측값"
+        },
+        "app": {
+          "path": "data/app/etf-sector-data.js",
+          "global": "window.ETF_SECTOR_DATA",
+          "usedByCurrentIndex": false,
+          "activeSource": "index.html#etf-dashboard-data",
+          "note": "사용자 편집 보호를 위해 App 어댑터는 자동 로드하지 않음"
+        }
+      }
+    },
+    {
+      "datasetId": "valuation-q1-2025",
+      "label": "Q1 2025 밸류에이션 유니버스",
+      "layers": {
+        "raw": {
+          "path": "data/raw/source-register.json",
+          "status": "missing",
+          "sourceFile": "SEC QQQ N-PORT snapshot (2025-03-31)"
+        },
+        "processed": {
+          "canonicalPath": "data/processed/valuation-q1-2025.json",
+          "rowCount": 100,
+          "q1MarketCapKeyCount": 113,
+          "recentMarketCapKeyCount": 115,
+          "asOf": "Fiscal Q1 2025",
+          "retrievedAt": "2026-08-10"
+        },
+        "app": {
+          "path": "data/app/valuation-data.js",
+          "globals": ["window.NDX_Q1_2025", "window.NDX_Q1_2025_MARKET_CAP", "window.NDX_RECENT_MARKET_CAP"],
+          "usedByCurrentIndex": false,
+          "activeSource": "index.html inline valuation data"
+        }
+      }
+    },
+    {
+      "datasetId": "low-pe-q1-2025",
+      "label": "Q1 2025 저PER 후보·선정 데이터",
+      "layers": {
+        "raw": {
+          "path": "data/raw/source-register.json",
+          "status": "missing",
+          "sourceFile": "StockAnalysis screener + quarterly ratio pages"
+        },
+        "processed": {
+          "canonicalPath": "data/processed/low-pe-q1-2025.json",
+          "candidatePoolCount": 62,
+          "selectedCount": 19,
+          "rowCount": 62,
+          "asOf": "Fiscal Q1 2025",
+          "retrievedAt": "2026-08-10"
+        },
+        "app": {
+          "path": "data/app/low-pe-data.js",
+          "global": "window.LOW_PE_Q1_2025",
+          "usedByCurrentIndex": false,
+          "activeSource": "screen_low_pe_q1_2025.js"
+        }
+      }
+    },
+    {
+      "datasetId": "quant-trend-daily",
+      "label": "Quant × Trend Template 일별 스냅샷",
+      "layers": {
+        "raw": {
+          "path": "data/raw/market/",
+          "status": "not_connected",
+          "sourceFile": "Massive daily aggregate response",
+          "immutable": true
+        },
+        "processed": {
+          "canonicalPath": "data/processed/quant-trend/",
+          "schemaPath": "data/schemas/quant-trend-snapshot.schema.json",
+          "granularity": "daily",
+          "requiredHistory": "253 trading-day closes",
+          "transform": "normalized OHLCV → SMA50/150/200, 52-week range, 252-day return, RS percentile, Trend 8 rules"
+        },
+        "app": {
+          "path": "data/app/quant-trend-snapshot.js",
+          "global": "window.QUANT_TREND_SNAPSHOT",
+          "usedByCurrentIndex": true,
+          "activeSource": "index.html quanttrend report",
+          "note": "placeholder는 null이며 Processed 스냅샷을 명시적으로 생성한 뒤 교체"
+        }
+      }
+    }
+  ]
+}

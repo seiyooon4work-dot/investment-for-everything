@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "investment-for-everything/market-daily-bars.schema.json",
+  "title": "Normalized daily market bars",
+  "type": "object",
+  "required": ["schemaVersion", "datasetId", "provider", "retrievedAt", "instruments"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "datasetId": { "const": "market-daily-bars-normalized" },
+    "provider": { "type": "string", "minLength": 1 },
+    "retrievedAt": { "type": "string", "format": "date-time" },
+    "adjusted": { "type": ["boolean", "null"] },
+    "timezone": { "type": "string" },
+    "instruments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ticker", "bars", "quality"],
+        "properties": {
+          "ticker": { "type": "string", "minLength": 1 },
+          "bars": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["date", "open", "high", "low", "close"],
+              "properties": {
+                "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+                "open": { "type": "number", "exclusiveMinimum": 0 },
+                "high": { "type": "number", "exclusiveMinimum": 0 },
+                "low": { "type": "number", "exclusiveMinimum": 0 },
+                "close": { "type": "number", "exclusiveMinimum": 0 },
+                "volume": { "type": ["number", "null"], "minimum": 0 },
+                "vwap": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "quality": { "type": "object" },
+          "provider": { "type": "string" },
+          "adjusted": { "type": ["boolean", "null"] },
+          "sourceRequestId": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

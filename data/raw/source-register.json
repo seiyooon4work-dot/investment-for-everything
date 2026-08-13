@@ -1,0 +1,38 @@
+{
+  "layer": "raw",
+  "status": "not-embedded",
+  "purpose": "원본 입력의 위치·출처·보유 여부를 기록하는 등록부입니다. 원본을 확보하기 전까지는 분석용 원본으로 간주하지 않습니다.",
+  "sources": [
+    {
+      "datasetId": "etf-monthly",
+      "rawFilePresent": false,
+      "sourceFile": "Stock of ETFs.xlsx",
+      "sourceSheet": "STOCKHISTORY",
+      "sourceUrl": "https://support.microsoft.com/en-us/office/stocks-data-type-faq-61a7d935-bb7a-4b05-b6c1-2f75e5f7e1a1",
+      "expectedRawShape": "일별 Date/Close 관측값",
+      "note": "현재 앱에 보관된 값은 일별 Close를 월별 마지막 관측값으로 만든 Processed 스냅샷입니다. 원본 엑셀은 이 workspace에 없습니다."
+    },
+    {
+      "datasetId": "valuation-q1-2025",
+      "rawFilePresent": false,
+      "sourceFile": "SEC QQQ N-PORT snapshot (2025-03-31)",
+      "sourceUrlPattern": "https://www.sec.gov/Archives/edgar/data/1350487/",
+      "secondarySourcePatterns": [
+        "https://stockanalysis.com/stocks/{ticker}/financials/ratios/?p=quarterly",
+        "https://www.financecharts.com/stocks/{ticker}/financial-ratios"
+      ],
+      "expectedRawShape": "SEC 원문 XML/원본 웹 응답",
+      "note": "현재 workspace에는 SEC XML과 원본 웹 응답이 없습니다. Processed 스냅샷의 source·status 필드로 추적합니다."
+    },
+    {
+      "datasetId": "low-pe-q1-2025",
+      "rawFilePresent": false,
+      "sourceFile": "StockAnalysis screener + quarterly ratio pages",
+      "sourceUrl": "https://stockanalysis.com/stocks/screener/",
+      "sourceUrlPattern": "https://stockanalysis.com/stocks/{ticker}/financials/ratios/?p=quarterly",
+      "expectedRawShape": "후보 스크리너 응답 및 기업별 분기 비율 원문",
+      "note": "현재 workspace에는 원본 HTML/응답이 없습니다. 후보 62개와 status/httpStatus가 Processed 스냅샷에 남아 있습니다."
+    }
+  ]
+}
+

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "investment-for-everything/quant-trend-snapshot.schema.json",
+  "title": "Quant × Trend Template processed snapshot",
+  "type": "object",
+  "required": ["schemaVersion", "datasetId", "generatedAt", "asOf", "provider", "benchmark", "coverage", "quality", "data"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "datasetId": { "const": "quant-trend-daily" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "asOf": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "provider": { "type": "string", "minLength": 1 },
+    "source": { "type": "object" },
+    "benchmark": {
+      "type": "object",
+      "required": ["ticker", "available", "barCount"],
+      "properties": {
+        "ticker": { "type": ["string", "null"] },
+        "available": { "type": "boolean" },
+        "asOf": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "barCount": { "type": "integer", "minimum": 0 },
+        "return252Pct": { "type": ["number", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "coverage": { "type": "object" },
+    "quality": {
+      "type": "object",
+      "required": ["status", "unknownTrendPolicy"],
+      "properties": {
+        "status": { "enum": ["ready", "partial", "empty"] },
+        "providerErrors": { "type": "array" },
+        "unknownTrendPolicy": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ticker", "asOf", "features", "trend", "quality"],
+        "properties": {
+          "ticker": { "type": "string", "minLength": 1 },
+          "asOf": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "features": { "type": "object" },
+          "trend": {
+            "type": "object",
+            "required": ["status", "passCount", "evaluatedCount", "totalCount", "rules"],
+            "properties": {
+              "status": { "enum": ["pending", "partial", "evaluated"] },
+              "passCount": { "type": "integer", "minimum": 0 },
+              "evaluatedCount": { "type": "integer", "minimum": 0 },
+              "totalCount": { "const": 8 },
+              "scorePct": { "type": ["number", "null"] },
+              "rules": { "type": "array", "minItems": 8, "maxItems": 8 }
+            },
+            "additionalProperties": true
+          },
+          "quality": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
+
