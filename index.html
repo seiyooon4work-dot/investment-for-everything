@@ -1388,54 +1388,179 @@
       .analysis-card { transition: none; }
     }
 
-    .moneycomics-entry {
-      margin-top: 16px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--surface);
+    .moneycomics-report-content .report-stats {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
-    .moneycomics-entry + .moneycomics-entry { margin-top: 14px; }
-    .moneycomics-entry h3 { margin: 10px 0 6px; }
-    .moneycomics-entry-meta {
+    .moneycomics-flow-note {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .moneycomics-list-heading {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      color: var(--muted);
-      font-size: .74rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 15px;
     }
-    .moneycomics-entry-status {
-      display: inline-flex;
-      padding: 5px 8px;
-      border-radius: 999px;
-      background: var(--blue-soft);
-      color: var(--blue);
+    .moneycomics-list-heading h2 { margin-bottom: 0; }
+    .moneycomics-list-heading p { max-width: 450px; margin-bottom: 0; color: var(--ink-soft); font-size: 12px; text-align: right; }
+    .moneycomics-list-tools { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .moneycomics-list-tools label { color: var(--ink-soft); font-size: 11px; font-weight: 800; }
+    .moneycomics-select {
+      min-width: 230px;
+      padding: 8px 10px;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      font-size: 12px;
       font-weight: 700;
     }
-    .moneycomics-entry-upload { margin: 0 0 16px; color: var(--muted); }
-    .moneycomics-summary-list {
+    .moneycomics-video-list { display: grid; gap: 8px; }
+    .moneycomics-video-grid-head {
       display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) 94px 94px 94px 110px;
       gap: 12px;
-      margin-top: 18px;
+      padding: 0 15px 6px;
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 800;
+      text-align: right;
     }
-    .moneycomics-summary-list > div {
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
+    .moneycomics-video-grid-head span:first-child, .moneycomics-video-grid-head span:nth-child(2) { text-align: left; }
+    .moneycomics-video-row {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) 94px 94px 94px 110px;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 15px;
+      color: var(--ink);
+      text-align: left;
+      background: rgba(255, 253, 249, .86);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .moneycomics-summary-list strong { display: block; margin-bottom: 4px; color: var(--ink); }
-    .moneycomics-summary-list p { margin: 0; }
-    .moneycomics-sync-note {
+    .moneycomics-video-row:hover { transform: translateY(-2px); background: var(--surface); border-color: var(--teal); box-shadow: 0 8px 20px rgba(25, 51, 67, .07); }
+    .moneycomics-video-date { color: var(--ink-soft); font-size: 11px; font-variant-numeric: tabular-nums; }
+    .moneycomics-video-title { min-width: 0; }
+    .moneycomics-video-title strong { display: block; overflow: hidden; font-size: 13px; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
+    .moneycomics-video-title small { display: block; margin-top: 3px; overflow: hidden; color: var(--ink-soft); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .moneycomics-row-score { color: var(--teal-deep); font-size: 12px; font-weight: 850; text-align: right; font-variant-numeric: tabular-nums; }
+    .moneycomics-row-score small { display: none; margin-bottom: 2px; color: var(--ink-soft); font-size: 9px; font-weight: 700; }
+    .moneycomics-row-score.is-pending { color: var(--ink-soft); font-weight: 700; }
+    .moneycomics-status {
       display: inline-flex;
-      margin-top: 10px;
-      padding: 7px 10px;
-      border-radius: 999px;
+      justify-content: center;
+      padding: 5px 7px;
+      color: var(--teal-deep);
       background: var(--teal-soft);
-      color: var(--teal);
-      font-size: .76rem;
-      font-weight: 700;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .moneycomics-status.is-draft { color: var(--orange); background: var(--orange-soft); }
+    .moneycomics-status.is-waiting { color: var(--plum); background: var(--plum-soft); }
+    .moneycomics-empty {
+      padding: 20px;
+      color: var(--ink-soft);
+      background: var(--surface-blue);
+      border: 1px dashed var(--line-strong);
+      border-radius: 10px;
+      font-size: 12px;
+    }
+    .moneycomics-detail-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 15px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+    .moneycomics-detail-head h2 { margin-bottom: 7px; font-size: clamp(23px, 3vw, 34px); letter-spacing: -.05em; }
+    .moneycomics-detail-head p { margin-bottom: 0; color: var(--ink-soft); font-size: 12px; }
+    .moneycomics-detail-head-side { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .moneycomics-back-list {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      color: var(--teal-deep);
+      background: var(--teal-soft);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .moneycomics-detail-stack { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 11px; }
+    .moneycomics-detail-card {
+      padding: 19px 20px 20px;
+      min-width: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .moneycomics-detail-card h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.035em; }
+    .moneycomics-detail-card > p { margin-bottom: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.7; }
+    .moneycomics-tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .moneycomics-tag { padding: 5px 8px; color: var(--teal-deep); background: var(--teal-soft); border-radius: 999px; font-size: 10px; font-weight: 800; }
+    .moneycomics-claim-list { display: grid; gap: 9px; margin-top: 13px; }
+    .moneycomics-claim-row { padding: 11px 12px; background: var(--surface-blue); border-left: 3px solid var(--line-strong); border-radius: 0 8px 8px 0; }
+    .moneycomics-claim-row strong { display: block; margin-bottom: 4px; font-size: 11px; }
+    .moneycomics-claim-row p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+    .moneycomics-claim-row.is-pending { border-left-color: var(--orange); }
+    .moneycomics-claim-row.is-confirmed { border-left-color: var(--teal); }
+    .moneycomics-horizon-wrap { overflow-x: auto; margin-top: 12px; border: 1px solid var(--line); border-radius: 9px; }
+    .moneycomics-horizon-table { width: 100%; min-width: 650px; border-collapse: collapse; }
+    .moneycomics-horizon-table th { padding: 9px 10px; color: var(--ink-soft); background: var(--surface-blue); font-size: 10px; font-weight: 800; text-align: left; white-space: nowrap; }
+    .moneycomics-horizon-table td { padding: 10px; border-top: 1px solid #edf1f1; color: var(--ink); font-size: 11px; vertical-align: top; }
+    .moneycomics-horizon-table td:last-child, .moneycomics-horizon-table th:last-child { text-align: right; }
+    .moneycomics-horizon-table small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 10px; }
+    .moneycomics-score-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .moneycomics-score-box { padding: 13px; background: var(--surface-blue); border: 1px solid #cfe0e6; border-radius: 9px; }
+    .moneycomics-score-box > span { display: block; margin-bottom: 4px; color: var(--ink-soft); font-size: 10px; font-weight: 800; }
+    .moneycomics-score-box strong { display: block; color: var(--teal-deep); font-size: 23px; letter-spacing: -.06em; }
+    .moneycomics-score-box small { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 10px; line-height: 1.45; }
+    .moneycomics-score-box.is-total { background: var(--teal-soft); border-color: #a9d6cf; }
+    .moneycomics-score-box.is-total strong { color: var(--teal-deep); font-size: 30px; }
+    .moneycomics-score-box.is-pending strong { color: var(--ink-soft); font-size: 21px; }
+    .moneycomics-source-list { display: grid; gap: 8px; margin-top: 12px; }
+    .moneycomics-source-row { display: grid; grid-template-columns: 125px minmax(0, 1fr); gap: 10px; padding-top: 9px; border-top: 1px solid var(--line); font-size: 11px; }
+    .moneycomics-source-row strong { color: var(--ink-soft); }
+    .moneycomics-source-row span { color: var(--ink); }
+    .moneycomics-source-row a { color: var(--teal-deep); font-weight: 750; }
+    .moneycomics-sync-note { display: inline-flex; margin-top: 10px; padding: 7px 10px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); font-size: .76rem; font-weight: 700; }
+
+    @media (max-width: 1050px) {
+      .moneycomics-report-content .report-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .moneycomics-video-row { grid-template-columns: 92px minmax(0, 1fr) 82px 82px 82px 100px; gap: 8px; }
+    }
+
+    @media (max-width: 720px) {
+      .moneycomics-report-content .report-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .moneycomics-list-heading { display: block; }
+      .moneycomics-list-heading p { margin-top: 7px; text-align: left; }
+      .moneycomics-list-tools { display: block; }
+      .moneycomics-select { width: 100%; margin-top: 7px; }
+      .moneycomics-video-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px 10px; padding: 13px; }
+      .moneycomics-video-grid-head { display: none; }
+      .moneycomics-video-date { grid-column: 1 / 3; }
+      .moneycomics-video-title { grid-column: 1 / -1; grid-row: 2; }
+      .moneycomics-video-row > .moneycomics-row-score:nth-of-type(3), .moneycomics-video-row > .moneycomics-row-score:nth-of-type(4), .moneycomics-video-row > .moneycomics-row-score:nth-of-type(5) { grid-row: 3; text-align: left; }
+      .moneycomics-row-score { display: flex; flex-direction: column; align-items: flex-start; font-size: 12px; }
+      .moneycomics-row-score small { display: block; }
+      .moneycomics-video-row > .moneycomics-status { grid-column: 3; grid-row: 1; }
+      .moneycomics-detail-head { display: block; }
+      .moneycomics-detail-head-side { justify-content: flex-start; margin-top: 11px; }
+      .moneycomics-detail-card { padding: 17px 15px; }
+      .moneycomics-score-grid { grid-template-columns: 1fr; }
+      .moneycomics-source-row { grid-template-columns: 1fr; gap: 3px; }
     }
   </style>
 </head>
@@ -1533,12 +1658,12 @@
             <span class="card-footer"><span>후보군 살펴보기</span><span>→</span></span>
           </button>
 
-          <button class="analysis-card" type="button" data-report="moneycomics" aria-label="머니코믹스 영상 요약 세션 7 열기">
-            <span class="card-index">07 · VIDEO NOTES</span>
+          <button class="analysis-card" type="button" data-report="moneycomics" aria-label="머니코믹스 영상 정확도 검증 열기">
+            <span class="card-index">07 · ACCURACY REVIEW</span>
             <span class="card-icon" aria-hidden="true">◍</span>
-            <h3>머니코믹스 영상 요약</h3>
-            <p>Google Drive의 비공개 누적 요약을 기준으로 롱폼 영상의 주장·근거·시장 해석을 한 화면에 모읍니다.</p>
-            <span class="card-footer"><span>세션 7 열기</span><span>→</span></span>
+            <h3>머니코믹스 영상 정확도 검증</h3>
+            <p>Drive 누적 요약에서 실제 영상을 고르고, 주장·전망·근거를 영상별 평가 카드로 확인합니다.</p>
+            <span class="card-footer"><span>정확도 검증 열기</span><span>→</span></span>
           </button>
         </div>
 
@@ -2856,17 +2981,13 @@
         body: ""
       },
       moneycomics: {
-        eyebrow: "07 · MONEYCOMICS VIDEO NOTES",
-        title: "머니코믹스 롱폼 영상 요약",
-        subtitle: "Google Drive의 비공개 누적 요약 문서를 기준으로, 롱폼 영상의 핵심 주장과 근거·시장 해석을 같은 순서로 읽는 세션 7입니다.",
-        meta: ["Google Drive mirror", "Long-form only", "세션 7"],
+        eyebrow: "07 · MONEYCOMICS ACCURACY REVIEW",
+        title: "머니코믹스 영상 정확도 검증",
+        subtitle: "영상을 먼저 고르고, 클릭한 영상의 주장·전망·근거를 세로형 평가 카드로 확인합니다. 사실 확인과 전망 적중은 분리해 기록합니다.",
+        meta: ["Google Drive snapshot", "1·3·6·12개월", "자동 초안 → 수동 확정"],
         source: "",
-        stats: [
-          ["기록 원칙", String(moneyComicsDataset().rules.length), "Drive 원문 기준"],
-          ["현재 상태", moneyComicsDataset().latestCheck.label, moneyComicsDataset().latestCheck.date],
-          ["요약 항목", String(moneyComicsDataset().entries.length), "시범·과거 형식 포함"]
-        ],
-        nav: [["flow", "상태"], ["videos", "영상 기록"], ["method", "기록 기준"], ["limits", "주의"], ["sources", "출처"]],
+        stats: moneyComicsSummaryStats(),
+        nav: [["flow", "검증 흐름"], ["videos", "영상 목록"], ["method", "평가 기준"], ["limits", "주의"], ["sources", "출처"]],
         body: ""
       },
       etf: {
@@ -3933,14 +4054,162 @@
     }
 
 
+    let moneyComicsSelectedId = null;
+
     function moneyComicsDataset() {
       return window.MONEYCOMICS_SESSION_7 || {
         rules: [],
         entries: [],
         source: {},
         sync: {},
+        evaluation: {},
         latestCheck: { label: "데이터 없음", date: "—", message: "Drive 스냅샷을 불러오지 못했습니다." }
       };
+    }
+
+    function moneyComicsVideoEntries() {
+      const entries = Array.isArray(moneyComicsDataset().entries) ? moneyComicsDataset().entries : [];
+      return entries
+        .filter((entry) => entry && entry.kind === "video" && entry.excludeFromEvaluation !== true)
+        .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+    }
+
+    function moneyComicsAverage(values) {
+      const usable = values.filter((value) => typeof value === "number" && Number.isFinite(value));
+      return usable.length ? Math.round(usable.reduce((sum, value) => sum + value, 0) / usable.length) : null;
+    }
+
+    function moneyComicsScoreLabel(value) {
+      return typeof value === "number" && Number.isFinite(value) ? `${Math.round(value)}/100` : "—";
+    }
+
+    function moneyComicsSummaryStats() {
+      const entries = moneyComicsVideoEntries();
+      const confirmed = entries.filter((entry) => {
+        const evaluation = entry.evaluation || {};
+        return evaluation.reviewStatus === "confirmed" && typeof evaluation.totalScore === "number";
+      });
+      const factualScores = confirmed.map((entry) => entry.evaluation.factualScore);
+      const forecastScores = confirmed.map((entry) => entry.evaluation.forecastScore).filter((value) => typeof value === "number");
+      const totalScores = confirmed.map((entry) => entry.evaluation.totalScore);
+      return [
+        ["평가 완료 영상", String(confirmed.length), "수동 확정 결과"],
+        ["전체 정확도", moneyComicsScoreLabel(moneyComicsAverage(totalScores)), "확정 영상 평균"],
+        ["사실 확인 평균", moneyComicsScoreLabel(moneyComicsAverage(factualScores)), "사실 점수 평균"],
+        ["전망 적중 평균", moneyComicsScoreLabel(moneyComicsAverage(forecastScores)), "전망 평가 가능 영상"],
+        ["평가 대기", String(Math.max(entries.length - confirmed.length, 0)), "초안·기간 미성숙"]
+      ];
+    }
+
+    function moneyComicsStatus(entry) {
+      const evaluation = entry.evaluation || {};
+      if (evaluation.reviewStatus === "confirmed") return { label: "수동 확정", className: "" };
+      if (evaluation.status === "no_forecast") return { label: "전망 없음 · 초안", className: "is-draft" };
+      if (evaluation.status === "not_evaluable") return { label: "평가 불가", className: "is-waiting" };
+      return { label: "평가 대기 · 초안", className: "is-waiting" };
+    }
+
+    function moneyComicsPeriodLabel(period) {
+      return { "1m": "1개월", "3m": "3개월", "6m": "6개월", "1y": "1년" }[period] || period || "—";
+    }
+
+    function moneyComicsVerdictLabel(status) {
+      return {
+        hit: "적중",
+        partial: "부분 적중",
+        miss: "불일치",
+        immature: "미성숙",
+        not_evaluable: "평가 불가"
+      }[status] || "평가 대기";
+    }
+
+    function moneyComicsRenderList(entries, esc) {
+      const options = entries.map((entry) => `<option value="${esc(entry.id)}">${esc(entry.date || "날짜 미기재")} · ${esc(entry.title || "제목 미기재")}</option>`).join("");
+      const rows = entries.map((entry) => {
+        const evaluation = entry.evaluation || {};
+        const status = moneyComicsStatus(entry);
+        return `
+          <button class="moneycomics-video-row" type="button" data-moneycomics-video="${esc(entry.id)}" aria-label="${esc(entry.title || "영상")} 상세 평가 열기">
+            <span class="moneycomics-video-date">${esc(entry.date || "날짜 미기재")}</span>
+            <span class="moneycomics-video-title"><strong>${esc(entry.title || "제목 미기재")}</strong><small>${esc((entry.tags || []).join(" · ") || "영상 기록")}</small></span>
+            <span class="moneycomics-row-score ${typeof evaluation.factualScore === "number" ? "" : "is-pending"}"><small>사실</small>${esc(moneyComicsScoreLabel(evaluation.factualScore))}</span>
+            <span class="moneycomics-row-score ${typeof evaluation.forecastScore === "number" ? "" : "is-pending"}"><small>전망</small>${esc(moneyComicsScoreLabel(evaluation.forecastScore))}</span>
+            <span class="moneycomics-row-score ${typeof evaluation.totalScore === "number" ? "" : "is-pending"}"><small>종합</small>${esc(moneyComicsScoreLabel(evaluation.totalScore))}</span>
+            <span class="moneycomics-status ${status.className}">${esc(status.label)}</span>
+          </button>
+        `;
+      }).join("");
+      return `
+        <section class="report-section" id="videos">
+          <div class="moneycomics-list-heading">
+            <div><p class="eyebrow">Video list</p><h2>평가할 영상 고르기</h2></div>
+            <p>긴 설명은 접어두고 날짜·제목·점수·상태만 먼저 확인합니다. 영상을 누르면 세로형 상세 평가로 이동합니다.</p>
+          </div>
+          <div class="moneycomics-list-tools">
+            <label for="moneycomics-video-select">목록에서 바로 선택</label>
+            <select class="moneycomics-select" id="moneycomics-video-select" aria-label="머니코믹스 영상 선택">
+              <option value="">영상 선택</option>
+              ${options}
+            </select>
+          </div>
+          <div class="moneycomics-video-grid-head" aria-hidden="true"><span>날짜</span><span>영상 제목</span><span>사실</span><span>전망</span><span>종합</span><span>상태</span></div>
+          <div class="moneycomics-video-list" role="list">${rows || '<div class="moneycomics-empty">Drive 스냅샷에서 실제 영상 기록을 아직 확인하지 못했습니다. 확인된 영상이 추가되면 이 목록에서 평가를 시작할 수 있습니다.</div>'}</div>
+        </section>
+      `;
+    }
+
+    function moneyComicsRenderDetail(entry, esc) {
+      const data = moneyComicsDataset();
+      const source = data.source || {};
+      const sync = data.sync || {};
+      const evaluation = entry.evaluation || {};
+      const status = moneyComicsStatus(entry);
+      const sections = entry.sections || {};
+      const facts = Array.isArray(entry.facts) ? entry.facts : [];
+      const forecasts = Array.isArray(entry.forecasts) ? entry.forecasts : [];
+      const tags = [...(entry.tags || []), ...(entry.assets || []).map((asset) => asset.label)].filter(Boolean);
+      const videoLink = entry.sourceUrl ? `<a class="moneycomics-back-list" href="${esc(entry.sourceUrl)}" target="_blank" rel="noreferrer">원본 영상 ↗</a>` : '<span class="moneycomics-status is-waiting">원본 영상 링크 미기재</span>';
+      const claimRows = [
+        ["핵심 주장", sections.claim],
+        ["사실 확인 대상", facts.length ? facts.map((fact) => fact.summary).join(" · ") : "확인할 사실 주장이 구조화되지 않았습니다."],
+        ["전망·판단", forecasts.length ? forecasts.map((forecast) => `${forecast.assetLabel} · ${forecast.statedHorizon || "기간 미기재"}`).join(" · ") : "명시적 주식·ETF·섹터 전망 없음"],
+        ["영상의 범위", sections.interpretation]
+      ].map(([label, value], index) => `<div class="moneycomics-claim-row ${index === 1 && facts.some((fact) => fact.verdict === "not_evaluable") ? "is-pending" : ""}"><strong>${esc(label)}</strong><p>${esc(value || "기록 없음")}</p></div>`).join("");
+      const factRows = facts.map((fact) => `<div class="moneycomics-claim-row ${fact.verdict === "not_evaluable" ? "is-pending" : "is-confirmed"}"><strong>${esc(fact.summary || "사실 주장")} · ${esc(fact.verdict === "not_evaluable" ? "평가 대기" : fact.verdict)}</strong><p>${esc(fact.note || "근거 확인 후 판정합니다.")}</p></div>`).join("");
+      const horizonRows = forecasts.flatMap((forecast) => (forecast.horizons || []).map((horizon) => `
+        <tr>
+          <td>${esc(moneyComicsPeriodLabel(horizon.period))}</td>
+          <td>${esc(forecast.assetLabel || "대상 자산")}<small>${esc(forecast.ticker || "티커 미기재")}</small></td>
+          <td>${esc(forecast.benchmarkLabel || "지정 필요")}<small>${esc(forecast.benchmark || "벤치마크 미지정")}</small></td>
+          <td>—<small>시장 데이터 대기</small></td>
+          <td><span class="moneycomics-status is-waiting">${esc(moneyComicsVerdictLabel(horizon.status))}</span><small>${esc(moneyComicsScoreLabel(horizon.score))}</small></td>
+        </tr>
+      `)).join("");
+      const forecastTable = forecasts.length ? `
+        <div class="moneycomics-horizon-wrap"><table class="moneycomics-horizon-table"><thead><tr><th>기간</th><th>대상 자산</th><th>벤치마크</th><th>성과</th><th>판정</th></tr></thead><tbody>${horizonRows}</tbody></table></div>
+        <p class="moneycomics-flow-note" style="margin-top:10px">${esc(forecasts.map((forecast) => forecast.note || "").filter(Boolean).join(" "))}</p>
+      ` : '<div class="moneycomics-empty">명시적 주식·ETF·섹터 전망이 없어 전망 점수는 산정하지 않습니다. 이 영상은 사실 확인만 확정되면 사실 점수를 100점 기준으로 환산합니다.</div>';
+      const sourceRows = [
+        ["Drive 원문", source.title || "머니코믹스 롱폼 영상 누적 요약"],
+        ["스냅샷", `${sync.snapshotDate || "—"} · ${source.timezone || "Asia/Seoul"}`],
+        ["평가 상태", `${status.label} · ${evaluation.note || "근거 확인 전"}`],
+        ["주의·결론", `${sections.caution || "주의할 점 기록 없음"} ${sections.conclusion || ""}`]
+      ].map(([label, value]) => `<div class="moneycomics-source-row"><strong>${esc(label)}</strong><span>${esc(value)}</span></div>`).join("");
+      return `
+        <section class="report-section" id="videos">
+          <div class="moneycomics-detail-head">
+            <div><p class="eyebrow">${esc(entry.date || "날짜 미기재")} · VIDEO REVIEW</p><h2>${esc(entry.title || "제목 미기재")}</h2><p>${esc(entry.upload || "원문 기록")} · 실제 롱폼 영상</p></div>
+            <div class="moneycomics-detail-head-side">${videoLink}<span class="moneycomics-status ${status.className}">${esc(status.label)}</span><button class="moneycomics-back-list" type="button" data-moneycomics-back>← 영상 목록</button></div>
+          </div>
+          <div class="moneycomics-detail-stack">
+            <article class="moneycomics-detail-card"><h3>01 · 영상 주장 종합</h3><p>영상이 말한 범위와 평가 가능한 주장을 먼저 분리합니다.</p><div class="moneycomics-tag-list">${tags.map((tag) => `<span class="moneycomics-tag">${esc(tag)}</span>`).join("") || '<span class="moneycomics-tag">명시적 자산 추천 없음</span>'}</div><div class="moneycomics-claim-list">${claimRows}</div></article>
+            <article class="moneycomics-detail-card"><h3>02 · 전망에 대한 검증</h3><p>고정 기간은 1개월·3개월·6개월·1년입니다. 벤치마크가 없거나 기간이 맞지 않으면 임의로 점수화하지 않습니다.</p>${forecastTable}</article>
+            <article class="moneycomics-detail-card"><h3>03 · 정확도 요약</h3><div class="moneycomics-score-grid"><div class="moneycomics-score-box ${typeof evaluation.factualScore === "number" ? "" : "is-pending"}"><span>사실 확인</span><strong>${esc(moneyComicsScoreLabel(evaluation.factualScore))}</strong><small>${facts.length}개 주장 · 확인 대기 포함</small></div><div class="moneycomics-score-box ${typeof evaluation.forecastScore === "number" ? "" : "is-pending"}"><span>전망 적중</span><strong>${esc(moneyComicsScoreLabel(evaluation.forecastScore))}</strong><small>${forecasts.length ? "예측 항목 존재" : "전망 없음"}</small></div><div class="moneycomics-score-box is-pending"><span>평가 상태</span><strong>${esc(status.label)}</strong><small>${esc(evaluation.note || "근거 확인 후 수동 확정")}</small></div></div><div class="moneycomics-claim-list">${factRows || '<div class="moneycomics-empty">구조화된 사실 주장이 없습니다.</div>'}</div></article>
+            <article class="moneycomics-detail-card"><h3>04 · 종합 점수</h3><p>전망이 있는 영상은 사실 40점·전망 60점으로 계산하고, 전망이 없는 영상은 사실 점수만 100점 기준으로 환산합니다.</p><div class="moneycomics-score-grid"><div class="moneycomics-score-box"><span>사실 40점</span><strong>${esc(moneyComicsScoreLabel(evaluation.factualScore))}</strong><small>확인·부분 확인·불일치</small></div><div class="moneycomics-score-box"><span>전망 60점</span><strong>${esc(moneyComicsScoreLabel(evaluation.forecastScore))}</strong><small>적중·부분 적중·불일치</small></div><div class="moneycomics-score-box is-total is-pending"><span>종합 100점</span><strong>${esc(moneyComicsScoreLabel(evaluation.totalScore))}</strong><small>${evaluation.status === "no_forecast" ? "전망 없음 · 사실 점수만 환산" : "수동 확정 전"}</small></div></div></article>
+            <article class="moneycomics-detail-card"><h3>05 · 근거·데이터</h3><p>판정은 공식 자료와 시장 데이터 확인 후 확정합니다. 현재는 Drive 원문을 기준으로 만든 자동 평가 초안입니다.</p><div class="moneycomics-source-list">${sourceRows}</div><div class="moneycomics-tag-list">${source.url ? `<a class="moneycomics-tag" href="${esc(source.url)}" target="_blank" rel="noreferrer">비공개 Drive 원문 열기 ↗</a>` : ""}</div></article>
+          </div>
+        </section>
+      `;
     }
 
     function renderMoneycomicsBody() {
@@ -3948,95 +4217,27 @@
       const source = data.source || {};
       const sync = data.sync || {};
       const latest = data.latestCheck || {};
-      const entries = Array.isArray(data.entries) ? data.entries : [];
+      const entries = moneyComicsVideoEntries();
       const esc = (value) => valuationEscape(value == null ? "" : String(value));
-      const entryHtml = entries.map((entry, index) => {
-        const sections = entry.sections || {};
-        const sectionRows = [
-          ["핵심 주장", sections.claim],
-          ["근거·데이터", sections.evidence],
-          ["시장/투자 해석", sections.interpretation],
-          ["주의할 점", sections.caution],
-          ["한줄 결론", sections.conclusion]
-        ].map(([label, value]) => `
-          <div><strong>${esc(label)}</strong><p>${esc(value || "기록 없음")}</p></div>
-        `).join("");
-        return `
-          <article class="moneycomics-entry">
-            <div class="moneycomics-entry-meta">
-              <span class="moneycomics-entry-status">${esc(entry.sourceStatus || "Drive 기록")}</span>
-              <span>${esc(entry.date || "날짜 미기재")}</span>
-              <span>${String(index + 1).padStart(2, "0")}</span>
-            </div>
-            <h3>${esc(entry.title || "제목 미기재")}</h3>
-            <p class="moneycomics-entry-upload">업로드: ${esc(entry.upload || "미기재")} · 러닝타임: ${esc(entry.duration || "미기재")}</p>
-            <div class="moneycomics-summary-list">${sectionRows}</div>
-          </article>
-        `;
-      }).join("");
-
-      const rulesHtml = (data.rules || []).map((rule, index) => `
-        <div class="method-card"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(rule)}</strong><p>Drive 원문에서 유지하는 기록 기준입니다.</p></div>
-      `).join("");
-
-      return `
+      const selected = entries.find((entry) => entry.id === moneyComicsSelectedId);
+      const rulesHtml = [
+        "사실 확인 40점 · 전망 적중 60점",
+        "적중 100 · 부분 적중 50 · 불일치 0",
+        "1개월 · 3개월 · 6개월 · 1년 고정 기간",
+        "항목별 벤치마크가 없으면 평가 불가",
+        "자동 초안은 수동 확정 전까지 집계 제외"
+      ].map((rule, index) => `<div class="method-card"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(rule)}</strong><p>영상별 정확도 평가에 적용하는 고정 규칙입니다.</p></div>`).join("");
+      const flowHtml = `
         <section class="report-section blue" id="flow">
-          <p class="eyebrow">Session 7 · Drive mirror</p>
-          <h2>원문 → 필터 → 사이트 미러</h2>
-          <p class="section-lead">비공개 Google Drive 문서를 GitHub Pages가 직접 조회하지 않도록, 원문을 확인한 시점의 요약 데이터만 사이트에 반영합니다.</p>
-          <div class="sequence">
-            <div class="sequence-step"><span class="sequence-number">01</span><strong>Drive 원문</strong><p>${esc(source.title || "머니코믹스 롱폼 영상 누적 요약")}의 Tab 1을 기준으로 읽습니다.</p></div>
-            <div class="sequence-step"><span class="sequence-number">02</span><strong>롱폼 필터</strong><p>Shorts를 제외하고, 제목·업로드 정보·중복 여부가 확인된 항목만 기록합니다.</p></div>
-            <div class="sequence-step"><span class="sequence-number">03</span><strong>세션 7 반영</strong><p>핵심 주장 → 근거·데이터 → 시장/투자 해석 → 주의할 점 → 한줄 결론 순서를 보존합니다.</p></div>
-          </div>
-          <div class="two-column">
-            <div class="note-block teal-note">
-              <h3>${esc(latest.label || "신규 영상 확인 상태")}</h3>
-              <p>${esc(latest.message || "최신 확인 메모가 없습니다.")}</p>
-              <span class="moneycomics-sync-note">스냅샷 기준일 ${esc(sync.snapshotDate || latest.date || "—")}</span>
-            </div>
-            <div class="note-block">
-              <h3>현재 동기화</h3>
-              <p>원문 확인 시각: ${esc(latest.checkedAt || "—")} · 상태: ${esc(sync.status || "확인 필요")}</p>
-              <p>새 영상이 확인되면 같은 데이터 파일을 갱신해 이 화면에 누적합니다.</p>
-              <a class="text-link" href="${esc(source.url || "#")}" target="_blank" rel="noreferrer">비공개 Drive 원문 열기 ↗</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="report-section" id="videos">
-          <p class="eyebrow">Drive records</p>
-          <h2>원문에 기록된 요약</h2>
-          <p class="section-lead">현재 Drive 원문은 신규 2026-08-13 롱폼을 신뢰성 있게 확정하지 못한 상태입니다. 아래 항목은 원문에 남아 있는 형식 시범·과거 날짜 시범이며, 최신 신규 영상 수에는 포함하지 않습니다.</p>
-          ${entryHtml || '<div class="note-block"><h3>기록 없음</h3><p>Drive 원문에서 확인된 요약 항목이 없습니다.</p></div>'}
-        </section>
-
-        <section class="report-section teal" id="method">
-          <p class="eyebrow">Recording contract</p>
-          <h2>계속 연동할 때 지키는 기준</h2>
-          <div class="method-grid">${rulesHtml}</div>
-        </section>
-
-        <section class="report-section" id="limits">
-          <p class="eyebrow">Reading notes</p>
-          <h2>이 화면의 한계</h2>
-          <div class="two-column">
-            <div class="note-block teal-note"><h3>비공개 원문</h3><p>사이트에는 Drive 인증 토큰을 넣지 않습니다. 따라서 이 화면은 최신 Drive 원문을 직접 읽는 실시간 API가 아니라, 확인된 스냅샷을 보여줍니다.</p></div>
-            <div class="note-block"><h3>확인되지 않은 영상</h3><p>제목·업로드 시각·러닝타임·내용을 확인하지 못한 영상은 임의로 요약하지 않고 확인 대기로 남깁니다.</p></div>
-          </div>
-        </section>
-
-        <section class="report-section" id="sources">
-          <p class="eyebrow">Source ledger</p>
-          <h2>연동 출처</h2>
-          <div class="valuation-source-ledger">
-            <div class="source-ledger-row"><span class="source-ledger-label">원문</span><span><a class="text-link" href="${esc(source.url || "#")}" target="_blank" rel="noreferrer">${esc(source.title || "Google Drive 문서")} ↗</a> · 로그인 필요</span></div>
-            <div class="source-ledger-row"><span class="source-ledger-label">대상 탭</span><span>${esc(source.tabTitle || "Tab 1")}</span></div>
-            <div class="source-ledger-row"><span class="source-ledger-label">스냅샷</span><span>${esc(sync.snapshotDate || "—")} · ${esc(source.timezone || "Asia/Seoul")}</span></div>
-            <div class="source-ledger-row"><span class="source-ledger-label">동기화 방식</span><span>${esc(sync.note || "Drive 원문 기준의 스냅샷 갱신")}</span></div>
-          </div>
+          <p class="eyebrow">Accuracy review · Drive snapshot</p>
+          <h2>원문 → 자동 평가 초안 → 수동 확정</h2>
+          <p class="moneycomics-flow-note">${esc(source.title || "머니코믹스 롱폼 영상 누적 요약")}에서 실제 롱폼만 골라 영상별 주장과 전망을 분리합니다. 점수는 공식·시장 자료를 확인한 뒤 확정하고, 그 전에는 빈 점수와 평가 상태를 그대로 보여줍니다.</p>
+          <div class="sequence"><div class="sequence-step"><span class="sequence-number">01</span><strong>Drive 원문</strong><p>Tab 1의 실제 영상 기록을 기준으로 읽습니다.</p></div><div class="sequence-step"><span class="sequence-number">02</span><strong>자동 평가 초안</strong><p>사실·전망·평가 기간·벤치마크를 구조화합니다.</p></div><div class="sequence-step"><span class="sequence-number">03</span><strong>수동 확정</strong><p>근거와 시장 데이터를 확인한 결과만 평균 점수에 넣습니다.</p></div></div>
+          <div class="two-column"><div class="note-block teal-note"><h3>${esc(latest.label || "영상 확인 상태")}</h3><p>${esc(latest.message || "최신 확인 메모가 없습니다.")}</p><span class="moneycomics-sync-note">스냅샷 기준일 ${esc(sync.snapshotDate || latest.date || "—")}</span></div><div class="note-block"><h3>현재 동기화</h3><p>원문 확인: ${esc(latest.checkedAt || "—")} · 상태: ${esc(sync.status || "확인 필요")}</p><p>형식 시범·과거 날짜 시범은 평가 목록과 점수에서 제외합니다.</p></div></div>
         </section>
       `;
+      const body = selected ? moneyComicsRenderDetail(selected, esc) : moneyComicsRenderList(entries, esc);
+      return `${flowHtml}${body}<section class="report-section teal" id="method"><p class="eyebrow">Scoring contract</p><h2>평가 기준</h2><div class="method-grid">${rulesHtml}</div></section><section class="report-section" id="limits"><p class="eyebrow">Reading notes</p><h2>이 화면의 한계</h2><div class="two-column"><div class="note-block teal-note"><h3>점수는 자동 확정이 아님</h3><p>자동 평가 초안은 근거를 찾기 위한 시작점입니다. 수동 확정 전에는 종합 평균에서 제외하고 평가 대기로 표시합니다.</p></div><div class="note-block"><h3>벤치마크를 추정하지 않음</h3><p>영상의 대상 자산과 비교 기준이 분명하지 않으면 시장 성과를 임의로 비교하지 않습니다. 고정 기간과 공식·시장 자료가 모두 확인돼야 점수화합니다.</p></div></div></section><section class="report-section" id="sources"><p class="eyebrow">Source ledger</p><h2>연동 출처</h2><div class="valuation-source-ledger"><div class="source-ledger-row"><span class="source-ledger-label">원문</span><span><a class="text-link" href="${esc(source.url || "#")}" target="_blank" rel="noreferrer">${esc(source.title || "Google Drive 문서")} ↗</a> · 로그인 필요</span></div><div class="source-ledger-row"><span class="source-ledger-label">대상 탭</span><span>${esc(source.tabTitle || "Tab 1")}</span></div><div class="source-ledger-row"><span class="source-ledger-label">스냅샷</span><span>${esc(sync.snapshotDate || "—")} · ${esc(source.timezone || "Asia/Seoul")}</span></div><div class="source-ledger-row"><span class="source-ledger-label">동기화 방식</span><span>${esc(sync.note || "Drive 원문 기준의 스냅샷 갱신")}</span></div></div></section>`;
     }
 
     function renderQuantTrendBody() {
@@ -5237,11 +5438,38 @@
       iframe.srcdoc = decodeEmbeddedUtf8(encoded.textContent.trim());
     }
 
-    function renderReport(id) {
+    function openMoneycomicsVideo(videoId) {
+      if (!moneyComicsVideoEntries().some((entry) => entry.id === videoId)) return;
+      renderReport("moneycomics", { videoId });
+    }
+
+    function openMoneycomicsList() {
+      renderReport("moneycomics");
+    }
+
+    function bindMoneycomicsInteractions() {
+      document.querySelectorAll("[data-moneycomics-video]").forEach((button) => {
+        button.addEventListener("click", () => openMoneycomicsVideo(button.dataset.moneycomicsVideo));
+      });
+      document.querySelectorAll("[data-moneycomics-back]").forEach((button) => {
+        button.addEventListener("click", openMoneycomicsList);
+      });
+      const select = document.getElementById("moneycomics-video-select");
+      if (select) select.addEventListener("change", () => openMoneycomicsVideo(select.value));
+    }
+
+    function renderReport(id, options = {}) {
       const report = reports[id];
       if (!report) return;
 
-      const activeStats = id === "quanttrend" ? (() => {
+      if (id === "moneycomics") {
+        const requestedId = options.videoId || null;
+        moneyComicsSelectedId = moneyComicsVideoEntries().some((entry) => entry.id === requestedId) ? requestedId : null;
+      } else {
+        moneyComicsSelectedId = null;
+      }
+
+      const activeStats = id === "moneycomics" ? moneyComicsSummaryStats() : id === "quanttrend" ? (() => {
         const stats = quantTrendStats(quantTrendDataset());
         const snapshot = quantTrendSnapshot();
         return [
@@ -5261,6 +5489,7 @@
       const isEmbeddedReddit = id === "reddit" && Boolean(embeddedRedditSource && embeddedRedditSource.textContent.trim());
       const bodyHtml = isEmbeddedReddit ? renderEmbeddedReddit() : id === "valuation" ? renderValuationBody() : id === "lowpe" ? renderLowPeBody() : id === "quanttrend" ? renderQuantTrendBody() : id === "etf" ? renderEtfBody() : id === "moneycomics" ? renderMoneycomicsBody() : report.body;
 
+      reportContent.classList.toggle("moneycomics-report-content", id === "moneycomics");
       reportContent.innerHTML = isEmbeddedReddit ? bodyHtml : `
         <div class="report-hero">
           <p class="eyebrow">${report.eyebrow}</p>
@@ -5276,9 +5505,11 @@
 
       breadcrumb.textContent = `분석 선택 / ${report.title}`;
       setView("detail");
-      window.history.replaceState({ report: id }, "", `#${id}`);
+      const reportHash = id === "moneycomics" && moneyComicsSelectedId ? `#moneycomics/video/${encodeURIComponent(moneyComicsSelectedId)}` : `#${id}`;
+      window.history.replaceState({ report: id, videoId: moneyComicsSelectedId }, "", reportHash);
       if (isEmbeddedReddit) mountEmbeddedReddit();
       bindReportNavigation();
+      if (id === "moneycomics") bindMoneycomicsInteractions();
       if (id === "valuation") bindValuationTable();
       if (id === "valuation") bindValuationScatter();
       if (id === "lowpe") bindLowPeTable();
@@ -5318,8 +5549,21 @@
       }
     });
 
-    const initialReport = window.location.hash.slice(1);
-    if (initialReport && reports[initialReport]) renderReport(initialReport);
+    function renderFromLocation() {
+      const currentHash = window.location.hash.slice(1);
+      const detailMatch = currentHash.match(/^moneycomics\/video\/(.+)$/);
+      if (detailMatch) {
+        renderReport("moneycomics", { videoId: decodeURIComponent(detailMatch[1]) });
+      } else if (currentHash && reports[currentHash]) {
+        renderReport(currentHash);
+      } else if (!currentHash) {
+        setView("home");
+      }
+    }
+
+    window.addEventListener("hashchange", renderFromLocation);
+    window.addEventListener("popstate", renderFromLocation);
+    renderFromLocation();
   </script>
   <script src="writer.js"></script>
 </body>
