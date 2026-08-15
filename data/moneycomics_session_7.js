@@ -3,7 +3,7 @@
  * Source: private Google Drive document. Keep this file synchronized from the Drive source.
  */
 window.MONEYCOMICS_SESSION_7 = {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "session": 7,
   "title": "머니코믹스 롱폼 영상 요약",
   "source": {
@@ -23,6 +23,7 @@ window.MONEYCOMICS_SESSION_7 = {
     "snapshotDate": "2026-08-16",
     "note": "GitHub Pages는 비공개 Google Drive 문서를 브라우저에서 직접 읽지 않고, 이 스냅샷 파일을 Drive 원문 기준으로 갱신합니다.",
     "nextSync": "새 영상이 확인되면 같은 형식으로 entries에 추가하고 snapshotDate를 갱신합니다.",
+    "demoPolicy": "2026-03-13 기록은 평가 화면 시범으로 목록에 표시하되 실제 영상 집계·평균 점수에서는 제외합니다.",
     "evaluationMode": "auto-draft-manual-confirm",
     "evaluationNote": "사실·전망 점수는 공식·시장 자료를 확인한 뒤 수동 확정합니다. 확인 전에는 임의 점수를 표시하지 않습니다."
   },
@@ -43,10 +44,11 @@ window.MONEYCOMICS_SESSION_7 = {
     "date": "2026-08-16",
     "checkedAt": "2026-08-16 · Google Drive 원문 확인",
     "status": "synced",
-    "label": "실제 롱폼 2건 확인 · 평가 초안 대기",
-    "message": "Google Drive 누적 문서에서 실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록을 확인했습니다. 사실·전망 점수는 공식 자료와 시장 데이터 검증 후 확정합니다.",
-    "caution": "형식 시범·과거 날짜 시범은 평가 목록과 점수에서 제외합니다.",
-    "countableEntries": 2
+    "label": "실제 롱폼 2건 · 2026.03.13 시범 2건",
+    "message": "실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록은 집계 대상으로 유지하고, Drive에 요약된 2026-03-13 과거 영상 2건은 평가 흐름을 보여주는 시범으로 목록에 표시합니다.",
+    "caution": "2026-03-13 시범 2건은 목록에는 표시하되 실제 영상 집계·평균 점수에서 제외합니다.",
+    "countableEntries": 2,
+    "demoEntries": 2
   },
   "entries": [
     {
@@ -162,37 +164,118 @@ window.MONEYCOMICS_SESSION_7 = {
       }
     },
     {
-      "id": "past-format-example-iran",
-      "kind": "past-format-example",
-      "sourceStatus": "과거 날짜 형식 시범 · 현재 신규 영상으로 집계하지 않음",
+      "id": "moneycomics-demo-2026-03-13-iran-market",
+      "kind": "demo-video",
+      "isDemo": true,
+      "sourceStatus": "Drive 과거 영상 시범 · 실제 집계 제외",
       "date": "2026-03-13",
       "title": "끝장을 보려는 이란ㅣ소름듣는 제스트라다무스",
       "upload": "2026-03-13 오전 8:10경",
       "duration": "약 1시간 3분",
       "sourceUrl": null,
+      "tags": ["지정학", "유가·인플레이션", "시장 전망 시범"],
+      "assets": [{ "label": "미국 대형 기술주", "ticker": null, "type": "시장 범주", "role": "시장 흐름 관찰 대상" }],
       "sections": {
         "claim": "미국·이스라엘과 이란의 충돌이 깔끔하게 끝나지 않을 수 있지만, 시장이 전쟁 뉴스만으로 일방적으로 하락한다고 보기는 어렵습니다. 유가·환율·금리 기대가 흔들려도 이익 전망이 유지되면 시장이 버틸 수 있다는 관점입니다.",
         "evidence": "외부 영상 인덱스에 따르면 미국 대형 기술주의 2025년·2026년 이익 성장률 전망이 각각 약 26%로 제시됐습니다. 이익 전망이 유지된다면 시장이 한 방향으로만 하락한다고 단정하기 어렵다는 근거로 사용됐습니다.",
         "interpretation": "뉴스의 강도보다 실제 이익 전망이 훼손되는지를 봐야 합니다. 유가와 인플레이션이 성장주에 압력을 주는지, 위험 프리미엄이 되돌려지는지를 함께 확인합니다.",
         "caution": "전쟁의 경로는 예측하기 어렵고 성장률 전망은 컨센서스일 뿐 보장이 아닙니다. 지정학 뉴스만으로 단기 시장 방향을 추론하지 않습니다.",
         "conclusion": "전쟁 헤드라인보다 유가·인플레이션이 이익 전망을 얼마나 훼손하는지를 봅니다."
+      },
+      "facts": [
+        {
+          "id": "demo-iran-earnings-resilience",
+          "summary": "전쟁 뉴스·유가·기업이익 전망의 연결 관계",
+          "verdict": "not_evaluable",
+          "score": null,
+          "evidence": [{ "label": "Google Drive 2026-03-13 요약", "url": "https://docs.google.com/document/d/1JKHlZwLSIosYcE36aR3WxSC7xWQITdsXd9kZB2kfPO8/edit", "asOf": "2026-08-16" }],
+          "note": "외부 영상 인덱스와 당시 시장 자료를 대조하기 전의 시범 초안입니다."
+        }
+      ],
+      "forecasts": [
+        {
+          "id": "demo-iran-market-holds-if-earnings-hold",
+          "assetLabel": "미국 대형 기술주·주식시장",
+          "ticker": null,
+          "benchmark": null,
+          "benchmarkLabel": "지정 필요",
+          "direction": "conditional",
+          "statedHorizon": "조건부·기간 미제시",
+          "note": "고정 기간 전망과 대상 자산·벤치마크가 명시되지 않아 1개월·3개월·6개월·1년 점수는 시범에서 평가 불가입니다.",
+          "horizons": [
+            { "period": "1m", "status": "not_evaluable", "score": null },
+            { "period": "3m", "status": "not_evaluable", "score": null },
+            { "period": "6m", "status": "not_evaluable", "score": null },
+            { "period": "1y", "status": "not_evaluable", "score": null }
+          ]
+        }
+      ],
+      "evaluation": {
+        "reviewStatus": "draft",
+        "status": "not_evaluable",
+        "factualScore": null,
+        "forecastScore": null,
+        "totalScore": null,
+        "note": "고정 기간·대상 자산·벤치마크가 명시되지 않아 시범 평가 불가"
       }
     },
     {
-      "id": "past-format-example-kosdaq",
-      "kind": "past-format-example",
-      "sourceStatus": "과거 날짜 형식 시범 · 현재 신규 영상으로 집계하지 않음",
+      "id": "moneycomics-demo-2026-03-13-kosdaq-flow",
+      "kind": "demo-video",
+      "isDemo": true,
+      "sourceStatus": "Drive 과거 영상 시범 · 실제 집계 제외",
       "date": "2026-03-13",
       "title": "알 수 없는 끝, 가치가 있었나?",
       "upload": "2026-03-13 오후 9:17경 · R's TRADING ROOM",
       "duration": null,
       "sourceUrl": null,
+      "tags": ["KOSDAQ·KOSPI", "자금 흐름", "상대강도 시범"],
+      "assets": [
+        { "label": "KOSDAQ", "ticker": null, "type": "지수", "role": "상대강도 관찰 대상" },
+        { "label": "KOSPI", "ticker": null, "type": "지수", "role": "비교 대상" }
+      ],
       "sections": {
         "claim": "같은 지정학적 불확실성에서도 KOSPI와 KOSDAQ·업종별 자금 흐름은 다를 수 있습니다. KOSDAQ의 상대적 회복력과 자금이 어디로 이동하는지를 봐야 합니다.",
         "evidence": "외부 인덱스 약 6:51 구간에서 KOSDAQ이 KOSPI보다 강하게 나타났고, KOSDAQ ETF 편입 기대와 관련된 수급이 언급됐습니다. 약 9:25 구간에서는 KOSDAQ 반등 가능성과 ETF 후보, 방산 테마가 논의됐습니다.",
         "interpretation": "지수 방향 하나보다 상대강도와 자금 이동 구조를 봅니다. ETF·정책 기대가 실제 수요를 만들 수 있는지도 확인 대상입니다.",
         "caution": "ETF 편입 기대는 실제 편입·비중에 달려 있고 테마가 이미 가격에 반영됐을 수 있습니다. 외부 인덱스에는 전사 오류가 있을 수 있습니다.",
         "conclusion": "무엇이 덜 빠지고 어디로 자금이 들어가는지를 봅니다."
+      },
+      "facts": [
+        {
+          "id": "demo-kosdaq-relative-strength",
+          "summary": "KOSDAQ이 KOSPI보다 상대적으로 강했다는 당시 시장 관찰",
+          "verdict": "not_evaluable",
+          "score": null,
+          "evidence": [{ "label": "Google Drive 2026-03-13 요약", "url": "https://docs.google.com/document/d/1JKHlZwLSIosYcE36aR3WxSC7xWQITdsXd9kZB2kfPO8/edit", "asOf": "2026-08-16" }],
+          "note": "외부 영상 분석 자료에 의존한 기록이므로 원자료와 지수 기준일을 대조하기 전의 시범 초안입니다."
+        }
+      ],
+      "forecasts": [
+        {
+          "id": "demo-kosdaq-relative-rebound",
+          "assetLabel": "KOSDAQ",
+          "ticker": null,
+          "benchmark": "KOSPI",
+          "benchmarkLabel": "KOSPI",
+          "direction": "positive",
+          "statedHorizon": "전쟁 진정 시 상대적 반등 가능성·기간 미제시",
+          "note": "영상 요약에 고정 기간이 없어 1개월·3개월·6개월·1년 점수는 시범에서 평가 불가입니다.",
+          "horizons": [
+            { "period": "1m", "status": "not_evaluable", "score": null },
+            { "period": "3m", "status": "not_evaluable", "score": null },
+            { "period": "6m", "status": "not_evaluable", "score": null },
+            { "period": "1y", "status": "not_evaluable", "score": null }
+          ]
+        }
+      ],
+      "evaluation": {
+        "reviewStatus": "draft",
+        "status": "not_evaluable",
+        "factualScore": null,
+        "forecastScore": null,
+        "totalScore": null,
+        "note": "고정 기간이 없어 시범 평가 불가 · KOSDAQ/KOSPI 비교만 명시"
       }
     }
   ]
