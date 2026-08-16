@@ -3,7 +3,7 @@
  * Source: private Google Drive document. Keep this file synchronized from the Drive source.
  */
 window.MONEYCOMICS_SESSION_7 = {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "session": 7,
   "title": "머니코믹스 롱폼 영상 요약",
   "source": {
@@ -23,7 +23,7 @@ window.MONEYCOMICS_SESSION_7 = {
     "snapshotDate": "2026-08-16",
     "note": "GitHub Pages는 비공개 Google Drive 문서를 브라우저에서 직접 읽지 않고, 이 스냅샷 파일을 Drive 원문 기준으로 갱신합니다.",
     "nextSync": "새 영상이 확인되면 같은 형식으로 entries에 추가하고 snapshotDate를 갱신합니다.",
-    "demoPolicy": "2026-03-13 기록은 평가 화면 시범으로 목록에 표시하되 실제 영상 집계·평균 점수에서는 제외합니다. 실제 시장 관찰값은 별도 카드로 보여주고 점수와 분리합니다.",
+    "demoPolicy": "2026-03-13 기록은 평가 화면 시범으로 목록에 표시하되 실제 영상 집계·평균 점수에서는 제외합니다. 실제 시장 관찰값은 별도 카드로 보여주고 점수와 분리합니다. 대한항공 성과 비교 행은 영상 주장과 무관한 화면 시범입니다.",
     "evaluationMode": "auto-draft-manual-confirm",
     "evaluationNote": "사실·전망 점수는 공식·시장 자료를 확인한 뒤 수동 확정합니다. 확인 전에는 임의 점수를 표시하지 않습니다."
   },
@@ -44,11 +44,11 @@ window.MONEYCOMICS_SESSION_7 = {
     "date": "2026-08-16",
     "checkedAt": "2026-08-16 · Google Drive 원문 확인",
     "status": "synced",
-    "label": "실제 롱폼 2건 · 2026.03.13 시범 2건",
-    "message": "실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록은 집계 대상으로 유지하고, Drive에 요약된 2026-03-13 과거 영상 2건은 평가 흐름을 보여주는 시범으로 목록에 표시합니다. 첫 번째 시범에는 3월 13일 기준 실제 시장 관찰값을 연결했습니다.",
+    "label": "실제 롱폼 2건 · 과거 시범 2건 · 성과 비교 시범 1건",
+    "message": "실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록은 집계 대상으로 유지하고, Drive에 요약된 2026-03-13 과거 영상 2건과 대한항공 성과 비교 화면 시범 1건은 평가 흐름을 보여주는 별도 행으로 표시합니다.",
     "caution": "2026-03-13 시범 2건은 목록에는 표시하되 실제 영상 집계·평균 점수에서 제외합니다.",
     "countableEntries": 2,
-    "demoEntries": 2
+    "demoEntries": 3
   },
   "entries": [
     {
@@ -161,6 +161,66 @@ window.MONEYCOMICS_SESSION_7 = {
         "interpretation": "무엇을 살지뿐 아니라 무엇을 덜어낼지를 비교하는 프레임입니다. 실제 적용에서는 밸류에이션, 실적 전망, 가격 모멘텀을 함께 확인해야 합니다.",
         "caution": "레버리지·롱숏은 고위험 전략이며 특정 시점의 관점입니다. 외부 AI 구조화 자막에는 화자·티커 매핑 오류가 있을 수 있습니다.",
         "conclusion": "레버리지나 롱숏을 맹목적으로 쓰기보다 상대가치를 비교하는 데서 출발합니다."
+      }
+    },
+    {
+      "id": "moneycomics-demo-performance-korean-air",
+      "kind": "performance-demo",
+      "isDemo": true,
+      "sourceStatus": "성과 비교 화면 시범 · 실제 영상 주장 아님 · 집계 제외",
+      "date": "2026-03-13",
+      "title": "대한항공 추천 성과 비교 시범",
+      "upload": "화면 흐름 확인용 · 실제 Drive 영상 기록 아님",
+      "duration": null,
+      "sourceUrl": null,
+      "tags": ["추천 종목", "기준 지수 비교", "성과 차트 시범"],
+      "assets": [{ "label": "대한항공", "ticker": "003490", "type": "주식", "role": "화면 시범 비교 대상" }],
+      "sections": {
+        "claim": "영상에서 대한항공을 추천했다고 가정했을 때, 추천 기준일 이후 대한항공 주가가 KOSPI보다 얼마나 움직였는지를 보여주는 화면 시범입니다.",
+        "evidence": "이 행 자체는 실제 영상의 추천 발언을 증명하지 않습니다. 대한항공·KOSPI의 기준일과 최신 종가를 연결해 성과 비교 UI만 확인합니다.",
+        "interpretation": "정확도 점수 대신 종목 수익률, 기준 지수 수익률, 지수 대비 초과·미달 수익률을 한 화면에서 읽는 흐름입니다.",
+        "caution": "가격수익률만 비교한 시범이며 배당·수수료·세금·환율·매매 체결가는 반영하지 않습니다. 실제 영상에 연결할 때는 발언 시점·티커·벤치마크를 먼저 확인해야 합니다.",
+        "conclusion": "추천 종목이 시장을 이겼는지 여부를 차트와 상대수익률로 먼저 보여주고, 사실성 점수는 별도 근거가 있을 때만 추가합니다."
+      },
+      "facts": [],
+      "forecasts": [],
+      "evaluation": {
+        "reviewStatus": "demo",
+        "status": "not_evaluable",
+        "factualScore": null,
+        "forecastScore": null,
+        "totalScore": null,
+        "note": "실제 영상 주장이 아닌 성과 비교 화면 시범 · 점수 집계 제외"
+      },
+      "performanceComparison": {
+        "status": "observed",
+        "mode": "ui-demo",
+        "title": "대한항공 vs KOSPI",
+        "assetLabel": "대한항공",
+        "assetTicker": "003490",
+        "benchmarkLabel": "KOSPI",
+        "benchmarkTicker": "KS11",
+        "currency": "KRW",
+        "startDate": "2026-03-13",
+        "asOf": "2026-08-14",
+        "startRule": "화면 시범: 2026-03-13 장마감 종가를 기준값으로 사용",
+        "returnType": "종가 기준 단순 수익률 · 배당·수수료·세금·환율 미반영",
+        "baseValue": { "asset": 24350, "benchmark": 5487.24 },
+        "endValue": { "asset": 26300, "benchmark": 6977.94 },
+        "assetReturnPct": 8.01,
+        "benchmarkReturnPct": 27.17,
+        "relativeReturnPct": -19.16,
+        "series": [
+          { "date": "2026-03-13", "assetValue": 24350, "benchmarkValue": 5487.24 },
+          { "date": "2026-08-14", "assetValue": 26300, "benchmarkValue": 6977.94 }
+        ],
+        "sources": [
+          { "label": "대한항공 2026-03-13 종가 확인", "url": "https://orangeboard.co.kr/search?keyword=003490" },
+          { "label": "대한항공 일별 과거 종가", "url": "https://stockanalysis.com/quote/krx/003490/history/" },
+          { "label": "KOSPI 2026-03-13 종가 확인", "url": "https://www.yna.co.kr/view/AKR20260313122951008" },
+          { "label": "KOSPI 일별 과거 종가", "url": "https://kr.investing.com/indices/kospi-historical-data" }
+        ],
+        "note": "실제 영상의 대한항공 추천 여부를 판정한 결과가 아니라, 추천 종목과 기준 지수의 상대성과를 보여주는 UI 시범입니다. 실제 영상 연결 전까지는 목록 평균·점수에 포함하지 않습니다."
       }
     },
     {
