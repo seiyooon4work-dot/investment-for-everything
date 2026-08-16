@@ -3,7 +3,7 @@
  * Source: private Google Drive document. Keep this file synchronized from the Drive source.
  */
 window.MONEYCOMICS_SESSION_7 = {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "session": 7,
   "title": "머니코믹스 롱폼 영상 요약",
   "source": {
@@ -23,7 +23,7 @@ window.MONEYCOMICS_SESSION_7 = {
     "snapshotDate": "2026-08-16",
     "note": "GitHub Pages는 비공개 Google Drive 문서를 브라우저에서 직접 읽지 않고, 이 스냅샷 파일을 Drive 원문 기준으로 갱신합니다.",
     "nextSync": "새 영상이 확인되면 같은 형식으로 entries에 추가하고 snapshotDate를 갱신합니다.",
-    "demoPolicy": "2026-03-13 기록은 평가 화면 시범으로 목록에 표시하되 실제 영상 집계·평균 점수에서는 제외합니다.",
+    "demoPolicy": "2026-03-13 기록은 평가 화면 시범으로 목록에 표시하되 실제 영상 집계·평균 점수에서는 제외합니다. 실제 시장 관찰값은 별도 카드로 보여주고 점수와 분리합니다.",
     "evaluationMode": "auto-draft-manual-confirm",
     "evaluationNote": "사실·전망 점수는 공식·시장 자료를 확인한 뒤 수동 확정합니다. 확인 전에는 임의 점수를 표시하지 않습니다."
   },
@@ -45,7 +45,7 @@ window.MONEYCOMICS_SESSION_7 = {
     "checkedAt": "2026-08-16 · Google Drive 원문 확인",
     "status": "synced",
     "label": "실제 롱폼 2건 · 2026.03.13 시범 2건",
-    "message": "실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록은 집계 대상으로 유지하고, Drive에 요약된 2026-03-13 과거 영상 2건은 평가 흐름을 보여주는 시범으로 목록에 표시합니다.",
+    "message": "실제 영상으로 식별 가능한 2026-08-13·2026-08-14 기록은 집계 대상으로 유지하고, Drive에 요약된 2026-03-13 과거 영상 2건은 평가 흐름을 보여주는 시범으로 목록에 표시합니다. 첫 번째 시범에는 3월 13일 기준 실제 시장 관찰값을 연결했습니다.",
     "caution": "2026-03-13 시범 2건은 목록에는 표시하되 실제 영상 집계·평균 점수에서 제외합니다.",
     "countableEntries": 2,
     "demoEntries": 2
@@ -216,7 +216,80 @@ window.MONEYCOMICS_SESSION_7 = {
         "factualScore": null,
         "forecastScore": null,
         "totalScore": null,
-        "note": "고정 기간·대상 자산·벤치마크가 명시되지 않아 시범 평가 불가"
+        "note": "실제 시장 데이터 관찰 완료 · 원문 벤치마크 미지정으로 점수 미확정"
+      },
+      "actualData": {
+        "status": "observed",
+        "asOf": "2026-08-16",
+        "title": "원문 조건을 분해한 실제 시장 관찰",
+        "methodology": "영상이 티커·벤치마크·고정 기간을 지정하지 않았으므로 S&P 500·NASDAQ-100·WTI·미국 CPI를 검증용 프록시로 분리했습니다. 2026-03-13 종가 또는 2026-03월 CPI를 기준으로 1개월·3개월은 가장 가까운 관찰일을 사용했고, 가격지수는 배당을 포함하지 않습니다.",
+        "verdict": "partial",
+        "verdictLabel": "부분 확인 · 시장 반응 범위",
+        "verdictNote": "S&P 500과 NASDAQ-100은 1개월·3개월 모두 상승했고, WTI는 1개월 상승 뒤 3개월에는 하락했습니다. 따라서 ‘전쟁 뉴스만으로 시장이 일방적으로 하락하지 않는다’는 제한된 시장 반응 관찰은 뒷받침되지만, 영상의 조건부 이익 전망·지정학적 인과·외부 인덱스의 26% 성장률 수치는 이 카드에서 확정하지 않습니다.",
+        "series": [
+          {
+            "label": "S&P 500",
+            "sourceName": "S&P Dow Jones Indices LLC via FRED",
+            "sourceUrl": "https://fred.stlouisfed.org/data/SP500",
+            "unit": "지수·종가",
+            "baseDate": "2026-03-13",
+            "baseValue": 6632.19,
+            "observations": [
+              { "period": "1m", "asOf": "2026-04-13", "value": 6886.24, "changePct": 3.83, "status": "observed", "note": "가격수익률" },
+              { "period": "3m", "asOf": "2026-06-12", "value": 7431.46, "changePct": 12.05, "status": "observed", "note": "가격수익률" },
+              { "period": "6m", "dueDate": "2026-09-13", "status": "immature", "note": "기준일 미도래" },
+              { "period": "1y", "dueDate": "2027-03-13", "status": "immature", "note": "기준일 미도래" }
+            ]
+          },
+          {
+            "label": "NASDAQ-100",
+            "sourceName": "Nasdaq, Inc. via FRED",
+            "sourceUrl": "https://fred.stlouisfed.org/data/NASDAQ100",
+            "unit": "지수·종가",
+            "baseDate": "2026-03-13",
+            "baseValue": 24380.73,
+            "observations": [
+              { "period": "1m", "asOf": "2026-04-13", "value": 25383.72, "changePct": 4.11, "status": "observed", "note": "가격수익률" },
+              { "period": "3m", "asOf": "2026-06-12", "value": 29635.95, "changePct": 21.55, "status": "observed", "note": "가격수익률" },
+              { "period": "6m", "dueDate": "2026-09-13", "status": "immature", "note": "기준일 미도래" },
+              { "period": "1y", "dueDate": "2027-03-13", "status": "immature", "note": "기준일 미도래" }
+            ]
+          },
+          {
+            "label": "WTI",
+            "sourceName": "U.S. EIA via FRED",
+            "sourceUrl": "https://fred.stlouisfed.org/data/DCOILWTICO",
+            "unit": "달러/배럴·일별",
+            "baseDate": "2026-03-13",
+            "baseValue": 98.48,
+            "observations": [
+              { "period": "1m", "asOf": "2026-04-13", "value": 100.72, "changePct": 2.27, "status": "observed", "note": "검증용 유가 프록시" },
+              { "period": "3m", "asOf": "2026-06-12", "value": 88.62, "changePct": -10.01, "status": "observed", "note": "검증용 유가 프록시" },
+              { "period": "6m", "dueDate": "2026-09-13", "status": "immature", "note": "기준일 미도래" },
+              { "period": "1y", "dueDate": "2027-03-13", "status": "immature", "note": "기준일 미도래" }
+            ]
+          },
+          {
+            "label": "미국 CPI",
+            "sourceName": "U.S. Bureau of Labor Statistics via FRED",
+            "sourceUrl": "https://fred.stlouisfed.org/data/CPIAUCSL",
+            "unit": "지수·월별",
+            "baseDate": "2026-03-01",
+            "baseValue": 330.293,
+            "observations": [
+              { "period": "1m", "asOf": "2026-04-01", "value": 332.407, "changePct": 0.64, "status": "observed", "note": "월별 관찰값 · 시장 1개월과 날짜가 정확히 일치하지 않음" },
+              { "period": "3m", "asOf": "2026-06-01", "value": 332.568, "changePct": 0.69, "status": "observed", "note": "월별 관찰값" },
+              { "period": "6m", "dueDate": "2026-09-01", "status": "immature", "note": "기준일 미도래" },
+              { "period": "1y", "dueDate": "2027-03-01", "status": "immature", "note": "기준일 미도래" }
+            ]
+          }
+        ],
+        "sources": [
+          { "label": "S&P 500 일별 종가", "url": "https://fred.stlouisfed.org/data/SP500" },
+          { "label": "NASDAQ-100 일별 종가", "url": "https://fred.stlouisfed.org/data/NASDAQ100" },
+          { "label": "WTI 일별 현물가격", "url": "https://fred.stlouisfed.org/data/DCOILWTICO" },
+          { "label": "미국 CPI 월별 지수", "url": "https://fred.stlouisfed.org/data/CPIAUCSL" }
+        ]
       }
     },
     {
