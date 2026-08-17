@@ -1263,13 +1263,49 @@
     .portfolio-panel h3 { margin-bottom: 8px; color: var(--ink); font-size: 14px; }
     .portfolio-panel p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.65; }
     .portfolio-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)); gap: 10px; margin-top: 17px; }
-    .portfolio-summary-card { min-width: 0; padding: 16px 17px 15px; background: rgba(255, 253, 249, .86); border: 1px solid var(--line); border-radius: 11px; }
+    .portfolio-summary-card { min-width: 0; padding: 16px 17px 15px; color: var(--ink); font: inherit; text-align: left; background: rgba(255, 253, 249, .86); border: 1px solid var(--line); border-radius: 11px; }
+    button.portfolio-summary-card { width: 100%; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+    button.portfolio-summary-card:hover, button.portfolio-summary-card:focus-visible { border-color: #8dc9c2; box-shadow: 0 8px 22px rgba(27, 95, 91, .1); transform: translateY(-1px); }
     .portfolio-summary-card.is-primary { background: linear-gradient(145deg, #eef9f7, #fffdf9); border-color: #b9ddda; }
+    .portfolio-summary-card.is-selected { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42, 126, 119, .14), 0 8px 22px rgba(27, 95, 91, .1); }
     .portfolio-summary-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 13px; }
     .portfolio-summary-card-head span:first-child { color: var(--teal); font-size: 10px; font-weight: 850; letter-spacing: .08em; }
     .portfolio-summary-card-head span:last-child { padding: 4px 6px; color: var(--teal-deep); background: var(--teal-soft); border-radius: 5px; font-size: 9px; font-weight: 850; white-space: nowrap; }
     .portfolio-summary-card h3 { margin-bottom: 4px; color: var(--ink); font-size: 17px; letter-spacing: -.04em; }
     .portfolio-summary-card > p { min-height: 35px; margin: 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; }
+    .portfolio-summary-card-action { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 14px; padding-top: 10px; color: var(--teal-deep); border-top: 1px solid rgba(185, 221, 218, .72); font-size: 10px; font-weight: 850; }
+    .portfolio-summary-card-action span { font-size: 14px; line-height: 1; }
+    .portfolio-detail-panel { margin-top: 16px; padding: 17px; background: linear-gradient(145deg, #f0faf8, #fffdf9 64%); border: 1px solid #b9ddda; border-radius: 11px; scroll-margin-top: 18px; }
+    .portfolio-detail-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    .portfolio-detail-head h3 { margin: 3px 0 5px; color: var(--ink); font-size: 21px; letter-spacing: -.04em; }
+    .portfolio-detail-head p { max-width: 680px; margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+    .portfolio-detail-kpis { display: grid; grid-template-columns: repeat(3, minmax(105px, 1fr)); gap: 6px; min-width: 330px; }
+    .portfolio-detail-kpi { padding: 9px 10px; background: rgba(255, 255, 255, .74); border: 1px solid rgba(185, 221, 218, .75); border-radius: 7px; }
+    .portfolio-detail-kpi span, .portfolio-detail-kpi strong { display: block; }
+    .portfolio-detail-kpi span { color: var(--ink-soft); font-size: 9px; }
+    .portfolio-detail-kpi strong { margin-top: 3px; color: var(--teal-deep); font-size: 13px; }
+    .portfolio-detail-source { margin-top: 12px !important; color: #657b80 !important; font-size: 10px !important; }
+    .portfolio-detail-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); gap: 12px; margin-top: 15px; }
+    .portfolio-detail-block { min-width: 0; padding: 13px; background: rgba(255, 255, 255, .7); border: 1px solid rgba(207, 224, 230, .9); border-radius: 9px; }
+    .portfolio-detail-block h4 { margin: 0 0 9px; color: var(--ink); font-size: 12px; }
+    .portfolio-detail-table-wrap { overflow-x: auto; }
+    .portfolio-detail-table { width: 100%; min-width: 470px; border-collapse: collapse; }
+    .portfolio-detail-table th { padding: 7px 8px; color: var(--ink-soft); background: rgba(239, 247, 249, .8); font-size: 9px; font-weight: 800; text-align: left; white-space: nowrap; }
+    .portfolio-detail-table th:last-child, .portfolio-detail-table td:last-child { text-align: right; }
+    .portfolio-detail-table td { padding: 8px; border-top: 1px solid #e7eeee; color: var(--ink); font-size: 10px; white-space: nowrap; }
+    .portfolio-detail-table td:first-child { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .portfolio-detail-table .portfolio-label-cell strong { font-size: 10px; }
+    .portfolio-detail-table .portfolio-label-cell small { font-size: 9px; }
+    .portfolio-detail-weight strong, .portfolio-detail-weight span { display: block; }
+    .portfolio-detail-weight strong { color: var(--teal-deep); font-size: 12px; }
+    .portfolio-detail-weight span { margin-top: 2px; color: var(--ink-soft); font-size: 9px; }
+    .portfolio-detail-sector-list { display: grid; gap: 9px; }
+    .portfolio-detail-sector-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+    .portfolio-detail-sector-head strong { overflow: hidden; color: var(--ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .portfolio-detail-sector-head span { color: var(--teal-deep); font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .portfolio-detail-sector-track { height: 7px; overflow: hidden; border-radius: 99px; background: #e5eeee; }
+    .portfolio-detail-sector-track i { display: block; height: 100%; min-width: 2px; border-radius: inherit; background: linear-gradient(90deg, #9acfc8, var(--teal-deep)); }
+    .portfolio-detail-note { margin: 13px 0 0 !important; padding-top: 10px; color: var(--ink-soft) !important; border-top: 1px solid rgba(185, 221, 218, .75); font-size: 10px !important; line-height: 1.55 !important; }
     .portfolio-kpi-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
     .portfolio-kpi { padding: 8px 9px; background: rgba(243, 248, 251, .86); border-radius: 7px; }
     .portfolio-kpi span, .portfolio-kpi strong { display: block; }
@@ -1331,6 +1367,7 @@
       .writer-dashboard-grid { grid-template-columns: 1fr; }
       .etf-chart-grid { grid-template-columns: 1fr; }
       .portfolio-overview-grid { grid-template-columns: 1fr; }
+      .portfolio-detail-grid { grid-template-columns: 1fr; }
       .quanttrend-method-grid, .quanttrend-data-contract { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
@@ -1381,6 +1418,8 @@
       .etf-rank-svg { height: 590px; }
       .etf-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .portfolio-kpi-grid { grid-template-columns: 1fr; }
+      .portfolio-detail-head { display: block; }
+      .portfolio-detail-kpis { min-width: 0; margin-top: 13px; }
       .portfolio-sector-columns { grid-template-columns: 1fr; }
       .portfolio-sector-head { display: block; }
       .portfolio-sector-head small { display: block; margin-top: 3px; text-align: left; }
@@ -2995,6 +3034,7 @@
     const etfDashboardDataNode = document.getElementById("etf-dashboard-data");
     window.ETF_SECTOR_DATA = etfDashboardDataNode ? JSON.parse(etfDashboardDataNode.textContent) : null;
     var QUANT_TREND_BENCHMARK = null;
+    var portfolioSelectedIndex = 0;
     function portfolioNumber(value) {
       const number = Number(value);
       return Number.isFinite(number) ? number : 0;
@@ -3064,6 +3104,61 @@
       ];
     }
 
+    function renderPortfolioDetail(portfolio, index) {
+      const escape = valuationEscape;
+      const sectorItems = portfolioSectorTotals(portfolio);
+      const sourceLabel = portfolio.sourceFile
+        ? `${portfolio.sourceFile} · ${portfolio.sourceSheet || "시트 미기재"} · ${portfolio.sourceRange || "범위 미기재"}`
+        : "사용자 입력 구성";
+      const asOfLabel = portfolio.asOf ? `기준 ${portfolio.asOf}` : "원자료 기준일 미기재";
+      const holdingRows = portfolio.holdings.map((holding, holdingIndex) => `
+        <tr>
+          <td>${String(holdingIndex + 1).padStart(2, "0")}</td>
+          <td class="portfolio-label-cell"><strong>${escape(holding.ticker)}</strong><small>${escape(holding.company || "—")}</small></td>
+          <td>${escape(holding.sector || "분류 보류")}</td>
+          <td class="portfolio-detail-weight"><strong>${portfolioFormatPercent(holding.weight)}</strong><span>전체 비중</span></td>
+        </tr>
+      `).join("");
+      const sectorRows = sectorItems.map((item) => {
+        const width = Math.max(0, Math.min(100, item.weight));
+        return `<div class="portfolio-detail-sector">
+          <div class="portfolio-detail-sector-head"><strong>${escape(item.sector)}</strong><span>${portfolioFormatPercent(item.weight)}</span></div>
+          <div class="portfolio-detail-sector-track"><i style="width:${width}%;"></i></div>
+        </div>`;
+      }).join("");
+      return `<section class="portfolio-detail-panel" id="portfolio-detail" aria-live="polite" tabindex="-1">
+        <div class="portfolio-detail-head">
+          <div>
+            <p class="eyebrow">${String(index + 1).padStart(2, "0")} · SELECTED COMPOSITION</p>
+            <h3>${escape(portfolio.name || `Portfolio ${index + 1}`)}</h3>
+            <p>${escape(portfolio.description || portfolio.label || "비교용 포트폴리오")}</p>
+            <p class="portfolio-detail-source">${escape(sourceLabel)} · ${escape(asOfLabel)}</p>
+          </div>
+          <div class="portfolio-detail-kpis">
+            <div class="portfolio-detail-kpi"><span>구성 종목</span><strong>${portfolio.holdings.length}개</strong></div>
+            <div class="portfolio-detail-kpi"><span>투자 비중</span><strong>${portfolioFormatPercent(portfolio.investedWeight)}</strong></div>
+            <div class="portfolio-detail-kpi"><span>미배분·현금</span><strong>${portfolioFormatPercent(portfolio.residualWeight)}</strong></div>
+          </div>
+        </div>
+        <div class="portfolio-detail-grid">
+          <div class="portfolio-detail-block">
+            <h4>종목별 구성</h4>
+            <div class="portfolio-detail-table-wrap">
+              <table class="portfolio-detail-table" aria-label="${escape(`${portfolio.name || "포트폴리오"} 종목별 구성`)}">
+                <thead><tr><th>#</th><th>종목·기업</th><th>분류</th><th>비중</th></tr></thead>
+                <tbody>${holdingRows}${portfolio.residualWeight > 0 ? `<tr class="portfolio-residual-row"><td>—</td><td class="portfolio-label-cell"><strong>—</strong><small>미배분·현금</small></td><td>현금</td><td class="portfolio-detail-weight"><strong>${portfolioFormatPercent(portfolio.residualWeight)}</strong><span>잔여 비중</span></td></tr>` : ""}</tbody>
+              </table>
+            </div>
+          </div>
+          <div class="portfolio-detail-block">
+            <h4>섹터별 합산</h4>
+            <div class="portfolio-detail-sector-list">${sectorRows}</div>
+          </div>
+        </div>
+        <p class="portfolio-detail-note">입력된 티커와 비중을 그대로 보여줍니다. 여기서 표시하는 섹터는 포트폴리오 간 구성을 비교하기 위한 화면용 분류이며, 가격 성과나 투자 추천을 의미하지 않습니다.</p>
+      </section>`;
+    }
+
     function renderPortfolioBody() {
       const portfolios = portfolioDataset();
       if (!portfolios.length) {
@@ -3071,9 +3166,12 @@
       }
 
       const escape = valuationEscape;
+      const selectedIndex = Math.min(Math.max(portfolioSelectedIndex, 0), portfolios.length - 1);
+      portfolioSelectedIndex = selectedIndex;
       const summaryCards = portfolios.map((portfolio, index) => {
         const status = portfolio.overAllocated > 0 ? "합계 점검" : portfolio.residualWeight > 0 ? `현금 ${portfolioFormatPercent(portfolio.residualWeight)}` : "100% 배분";
-        return `<article class="portfolio-summary-card ${index === 0 ? "is-primary" : ""}">
+        const selected = index === selectedIndex;
+        return `<button class="portfolio-summary-card ${index === 0 ? "is-primary" : ""}${selected ? " is-selected" : ""}" type="button" data-portfolio-select="${index}" aria-label="${escape(`${portfolio.name || `Portfolio ${index + 1}`} 구성 보기`)}" aria-pressed="${selected}">
           <div class="portfolio-summary-card-head"><span>${String(index + 1).padStart(2, "0")} · 구성</span><span>${escape(status)}</span></div>
           <h3>${escape(portfolio.name || `Portfolio ${index + 1}`)}</h3>
           <p>${escape(portfolio.description || portfolio.label || "비교용 포트폴리오")}</p>
@@ -3082,7 +3180,8 @@
             <div class="portfolio-kpi"><span>투자 비중</span><strong>${portfolioFormatPercent(portfolio.investedWeight)}</strong></div>
             <div class="portfolio-kpi"><span>미배분</span><strong>${portfolioFormatPercent(portfolio.residualWeight)}</strong></div>
           </div>
-        </article>`;
+          <div class="portfolio-summary-card-action"><span>이 포트폴리오의 구성 보기</span><span aria-hidden="true">→</span></div>
+        </button>`;
       }).join("");
 
       const comparisonRows = [
@@ -3160,7 +3259,9 @@
         <section class="report-section" id="compare">
           <p class="eyebrow">Portfolio comparison</p>
           <h2>등록된 포트폴리오</h2>
+          <p class="section-lead">아래 포트폴리오를 누르면 해당 구성의 종목·비중·섹터별 합산을 자세히 볼 수 있습니다.</p>
           <div class="portfolio-summary-grid">${summaryCards}</div>
+          ${renderPortfolioDetail(portfolios[selectedIndex], selectedIndex)}
           <div class="portfolio-table-wrap">
             <table class="portfolio-table" aria-label="포트폴리오 기본 구성 비교표">
               <thead><tr><th scope="col">항목</th>${portfolios.map((portfolio) => `<th scope="col">${escape(portfolio.name || "Portfolio")}</th>`).join("")}</tr></thead>
@@ -6008,6 +6109,7 @@
       window.history.replaceState({ report: id, videoId: moneyComicsSelectedId }, "", reportHash);
       if (isEmbeddedReddit) mountEmbeddedReddit();
       bindReportNavigation();
+      if (id === "portfolio") bindPortfolioInteractions();
       if (id === "moneycomics") bindMoneycomicsInteractions();
       if (id === "valuation") bindValuationTable();
       if (id === "valuation") bindValuationScatter();
@@ -6023,6 +6125,28 @@
           document.querySelectorAll("[data-jump]").forEach((item) => item.classList.remove("is-selected"));
           button.classList.add("is-selected");
           document.getElementById(button.dataset.jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+
+    function bindPortfolioInteractions() {
+      const buttons = document.querySelectorAll("[data-portfolio-select]");
+      const detail = document.getElementById("portfolio-detail");
+      const portfolios = portfolioDataset();
+      if (!buttons.length || !detail) return;
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const index = Number(button.dataset.portfolioSelect);
+          const portfolio = portfolios[index];
+          if (!portfolio) return;
+          portfolioSelectedIndex = index;
+          buttons.forEach((item) => {
+            const selected = Number(item.dataset.portfolioSelect) === index;
+            item.classList.toggle("is-selected", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
+          detail.outerHTML = renderPortfolioDetail(portfolio, index);
+          document.getElementById("portfolio-detail")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
         });
       });
     }
