@@ -1288,6 +1288,7 @@
     .portfolio-detail-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); gap: 12px; margin-top: 15px; }
     .portfolio-detail-block { min-width: 0; padding: 13px; background: rgba(255, 255, 255, .7); border: 1px solid rgba(207, 224, 230, .9); border-radius: 9px; }
     .portfolio-detail-block h4 { margin: 0 0 9px; color: var(--ink); font-size: 12px; }
+    .portfolio-detail-block h4.portfolio-detail-subtitle { margin: 15px 0 9px; padding-top: 12px; border-top: 1px solid #e1ecec; }
     .portfolio-detail-table-wrap { overflow-x: auto; }
     .portfolio-detail-table { width: 100%; min-width: 470px; border-collapse: collapse; }
     .portfolio-detail-table th { padding: 7px 8px; color: var(--ink-soft); background: rgba(239, 247, 249, .8); font-size: 9px; font-weight: 800; text-align: left; white-space: nowrap; }
@@ -1299,6 +1300,17 @@
     .portfolio-detail-weight strong, .portfolio-detail-weight span { display: block; }
     .portfolio-detail-weight strong { color: var(--teal-deep); font-size: 12px; }
     .portfolio-detail-weight span { margin-top: 2px; color: var(--ink-soft); font-size: 9px; }
+    .portfolio-detail-visual { display: grid; grid-template-columns: minmax(150px, .72fr) minmax(0, 1fr); align-items: center; gap: 12px; margin-bottom: 15px; }
+    .portfolio-pie-chart { position: relative; width: min(100%, 178px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .72), 0 7px 18px rgba(27, 95, 91, .1); }
+    .portfolio-pie-chart::after { position: absolute; inset: 25%; content: ""; background: #f7fcfb; border: 1px solid rgba(185, 221, 218, .7); border-radius: 50%; box-shadow: 0 1px 0 rgba(255, 255, 255, .8); }
+    .portfolio-pie-center { position: absolute; z-index: 1; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--teal-deep); text-align: center; }
+    .portfolio-pie-center strong { font-size: 20px; line-height: 1; }
+    .portfolio-pie-center span { margin-top: 4px; color: var(--ink-soft); font-size: 9px; }
+    .portfolio-pie-legend { display: grid; gap: 6px; max-height: 190px; overflow-y: auto; padding-right: 3px; }
+    .portfolio-pie-legend-item { display: grid; grid-template-columns: 9px minmax(0, 1fr) auto; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 9px; }
+    .portfolio-pie-legend-item i { width: 9px; height: 9px; border-radius: 3px; }
+    .portfolio-pie-legend-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .portfolio-pie-legend-item strong { color: var(--teal-deep); font-size: 10px; }
     .portfolio-detail-sector-list { display: grid; gap: 9px; }
     .portfolio-detail-sector-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
     .portfolio-detail-sector-head strong { overflow: hidden; color: var(--ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
@@ -1420,6 +1432,8 @@
       .portfolio-kpi-grid { grid-template-columns: 1fr; }
       .portfolio-detail-head { display: block; }
       .portfolio-detail-kpis { min-width: 0; margin-top: 13px; }
+      .portfolio-detail-visual { grid-template-columns: 1fr; }
+      .portfolio-pie-chart { width: 155px; }
       .portfolio-sector-columns { grid-template-columns: 1fr; }
       .portfolio-sector-head { display: block; }
       .portfolio-sector-head small { display: block; margin-top: 3px; text-align: left; }
@@ -3104,9 +3118,25 @@
       ];
     }
 
+    function portfolioPieData(portfolio) {
+      const colors = ["#1f746d", "#48a49a", "#80c2b8", "#b7ddd7", "#4e7181", "#7897a4", "#aabfc5", "#d4a85f", "#e0c48f", "#b46a54", "#d59a84", "#8f78a8"];
+      let cursor = 0;
+      const items = portfolioSectorTotals(portfolio).map((item, index) => {
+        const start = cursor;
+        const end = cursor + item.weight;
+        cursor = end;
+        return { ...item, color: colors[index % colors.length], start, end };
+      });
+      return {
+        gradient: items.length ? items.map((item) => `${item.color} ${item.start}% ${item.end}%`).join(", ") : "#e5eeee 0 100%",
+        items
+      };
+    }
+
     function renderPortfolioDetail(portfolio, index) {
       const escape = valuationEscape;
       const sectorItems = portfolioSectorTotals(portfolio);
+      const pie = portfolioPieData(portfolio);
       const sourceLabel = portfolio.sourceFile
         ? `${portfolio.sourceFile} · ${portfolio.sourceSheet || "시트 미기재"} · ${portfolio.sourceRange || "범위 미기재"}`
         : "사용자 입력 구성";
@@ -3126,6 +3156,7 @@
           <div class="portfolio-detail-sector-track"><i style="width:${width}%;"></i></div>
         </div>`;
       }).join("");
+      const pieLegend = pie.items.map((item) => `<div class="portfolio-pie-legend-item"><i style="background:${item.color};"></i><span>${escape(item.sector)}</span><strong>${portfolioFormatPercent(item.weight)}</strong></div>`).join("");
       return `<section class="portfolio-detail-panel" id="portfolio-detail" aria-live="polite" tabindex="-1">
         <div class="portfolio-detail-head">
           <div>
@@ -3151,7 +3182,14 @@
             </div>
           </div>
           <div class="portfolio-detail-block">
-            <h4>섹터별 합산</h4>
+            <h4>섹터별 원 그래프</h4>
+            <div class="portfolio-detail-visual">
+              <div class="portfolio-pie-chart" role="img" aria-label="${escape(`${portfolio.name || "포트폴리오"}의 섹터별 비중 원 그래프`)}" style="background: conic-gradient(from -90deg, ${pie.gradient});">
+                <div class="portfolio-pie-center"><strong>100%</strong><span>전체 구성</span></div>
+              </div>
+              <div class="portfolio-pie-legend">${pieLegend}</div>
+            </div>
+            <h4 class="portfolio-detail-subtitle">섹터별 합산</h4>
             <div class="portfolio-detail-sector-list">${sectorRows}</div>
           </div>
         </div>
