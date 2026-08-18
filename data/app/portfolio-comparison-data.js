@@ -7,7 +7,8 @@ window.PORTFOLIO_COMPARISON_DATA = {
   portfolios: [
     {
       id: "portfolio-1",
-      name: "Portfolio 1",
+      name: "Random 1",
+      createdAt: "2026-08-14",
       label: "균등 10종목",
       description: "지정한 10개 종목을 각각 10%로 배분",
       holdings: [
@@ -26,6 +27,7 @@ window.PORTFOLIO_COMPARISON_DATA = {
     {
       id: "portfolio-2",
       name: "Terra Portfolio",
+      createdAt: "2026-08-14",
       label: "미국 Top 500 · 공격 70 / 수비 30",
       description: "첨부 모델의 22개 종목을 공격형 70%·수비형 30% 목표 비중으로 반영",
       sourceFile: "us_top_500_model_portfolio_70_30.xlsx",
@@ -60,6 +62,7 @@ window.PORTFOLIO_COMPARISON_DATA = {
     {
       id: "portfolio-3",
       name: "Sol Portfolio",
+      createdAt: "2026-08-14",
       label: "공격 70 / 방어 30",
       description: "지정한 16개 종목을 공격형 70%·방어형 30% 목표 비중으로 배분",
       holdings: [
@@ -84,6 +87,7 @@ window.PORTFOLIO_COMPARISON_DATA = {
     {
       id: "portfolio-4",
       name: "Luna Portfolio",
+      createdAt: "2026-08-14",
       label: "공격 70 / 수비 30",
       description: "첨부 모델의 17개 종목을 공격형 70%·수비형 30% 목표 비중으로 반영",
       sourceFile: "portfolio_70_30_model.xlsx",
@@ -108,6 +112,44 @@ window.PORTFOLIO_COMPARISON_DATA = {
         { ticker: "WMT", company: "Walmart", sector: "필수소비/옴니채널", weight: 5 },
         { ticker: "KO", company: "Coca-Cola", sector: "음료/소비재", weight: 3 },
         { ticker: "WM", company: "Waste Management", sector: "폐기물/환경서비스", weight: 3 }
+      ]
+    },
+    {
+      id: "portfolio-5",
+      name: "Random 2",
+      createdAt: "2026-08-14",
+      label: "균등 10종목",
+      description: "지정한 10개 종목을 각각 10%로 배분",
+      holdings: [
+        { sourceRank: 23, ticker: "CSCO", company: "Cisco", sector: "AI 인프라/네트워크", weight: 10 },
+        { sourceRank: 78, ticker: "BKNG", company: "Booking Holdings", sector: "여행/온라인 플랫폼", weight: 10 },
+        { sourceRank: 119, ticker: "PNC", company: "PNC Financial", sector: "금융", weight: 10 },
+        { sourceRank: 146, ticker: "ICE", company: "Intercontinental Exchange", sector: "금융 인프라", weight: 10 },
+        { sourceRank: 204, ticker: "CIEN", company: "Ciena", sector: "AI 인프라/네트워크", weight: 10 },
+        { sourceRank: 255, ticker: "TTWO", company: "Take-Two Interactive", sector: "게임/인터랙티브 미디어", weight: 10 },
+        { sourceRank: 302, ticker: "TWLO", company: "Twilio", sector: "클라우드/커뮤니케이션", weight: 10 },
+        { sourceRank: 347, ticker: "ATO", company: "Atmos Energy", sector: "전력·유틸리티", weight: 10 },
+        { sourceRank: 418, ticker: "FICO", company: "Fair Isaac", sector: "데이터/소프트웨어", weight: 10 },
+        { sourceRank: 476, ticker: "FTV", company: "Fortive", sector: "산업재/계측", weight: 10 }
+      ]
+    },
+    {
+      id: "portfolio-6",
+      name: "All Random",
+      createdAt: "2026-08-14",
+      label: "입력 비중형 10종목",
+      description: "지정한 10개 종목을 입력한 비중 그대로 반영",
+      holdings: [
+        { sourceRank: 41, ticker: "GS", company: "Goldman Sachs", sector: "금융", weight: 7 },
+        { sourceRank: 92, ticker: "BMY", company: "Bristol Myers Squibb", sector: "제약/의료기기", weight: 12 },
+        { sourceRank: 137, ticker: "MNST", company: "Monster Beverage", sector: "음료/소비재", weight: 8 },
+        { sourceRank: 184, ticker: "TGT", company: "Target", sector: "필수소비/옴니채널", weight: 15 },
+        { sourceRank: 226, ticker: "ADSK", company: "Autodesk", sector: "소프트웨어/디자인", weight: 9 },
+        { sourceRank: 271, ticker: "DHI", company: "D.R. Horton", sector: "주택·건설", weight: 11 },
+        { sourceRank: 319, ticker: "RMD", company: "ResMed", sector: "제약/의료기기", weight: 13 },
+        { sourceRank: 358, ticker: "CPAY", company: "Corpay", sector: "결제 네트워크", weight: 6 },
+        { sourceRank: 407, ticker: "MTSI", company: "MACOM Technology Solutions", sector: "AI 인프라/반도체", weight: 10 },
+        { sourceRank: 489, ticker: "INVH", company: "Invitation Homes", sector: "주거 리츠/부동산", weight: 9 }
       ]
     }
   ]
