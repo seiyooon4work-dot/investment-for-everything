@@ -781,8 +781,10 @@
     .portfolio-price-tooltip { position: absolute; z-index: 3; display: none; min-width: 150px; max-width: min(245px, calc(100% - 20px)); padding: 9px 10px; color: var(--ink); background: rgba(255, 253, 249, .97); border: 1px solid var(--line-strong); border-radius: 8px; box-shadow: var(--shadow); font-size: 10px; pointer-events: none; }
     .portfolio-price-tooltip strong { display: block; margin-bottom: 4px; color: var(--teal-deep); font-size: 11px; }
     .portfolio-price-tooltip span { display: block; color: var(--ink-soft); line-height: 1.55; }
+    .portfolio-price-tooltip span.is-missing { color: #8d5a29; font-weight: 750; }
     .portfolio-price-tooltip b { color: var(--ink); font-weight: 850; }
     .portfolio-price-hover-hit { cursor: crosshair; }
+    .portfolio-price-hover-hit:focus { outline: none; stroke: var(--teal); stroke-width: 2; stroke-opacity: .7; }
     .portfolio-price-hover-guide { stroke: #718991; stroke-width: 1; stroke-dasharray: 3 3; pointer-events: none; }
     .portfolio-price-hover-dot { fill: var(--series-color); stroke: var(--surface-blue); stroke-width: 1.8; pointer-events: none; }
     .price-chart-source { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 9px; margin-top: 8px; color: var(--ink-soft); font-size: 10px; }
@@ -798,12 +800,12 @@
     .portfolio-creation-label { fill: #8d5a29 !important; font-size: 10px !important; font-weight: 800; }
     .portfolio-comparison-chart { max-width: none; }
     .portfolio-comparison-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 9px; }
-    .portfolio-comparison-legend-item { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-soft); font-size: 10px; }
+    .portfolio-comparison-legend-item { display: inline-flex; align-items: flex-start; gap: 7px; color: var(--ink-soft); font-size: 10px; }
     .portfolio-comparison-legend-item i { width: 24px; height: 0; border-top: 3px solid var(--series-color); }
     .portfolio-comparison-legend-item i.is-dashed { border-top-style: dashed; }
     .portfolio-comparison-legend-item i.is-dotted { border-top-style: dotted; }
     .portfolio-comparison-legend-item i.is-dash-dot { border-top-style: dashed; }
-    .portfolio-comparison-legend-item strong { color: var(--ink); font-size: 10px; }
+    .portfolio-comparison-legend-item strong { color: var(--ink); font-size: 10px; line-height: 1.35; }
     .portfolio-comparison-legend-item strong.is-pending { color: var(--ink-soft); }
     .portfolio-comparison-line { fill: none; stroke: var(--series-color); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
     .portfolio-comparison-line.is-reference { opacity: .42; }
@@ -1312,6 +1314,8 @@
     .portfolio-summary-grid::-webkit-scrollbar { height: 7px; }
     .portfolio-summary-grid::-webkit-scrollbar-thumb { background: #b9d3d3; border-radius: 99px; }
     .portfolio-summary-grid::-webkit-scrollbar-track { background: #edf5f4; border-radius: 99px; }
+    .portfolio-summary-hint { display: flex; justify-content: space-between; gap: 10px; margin-top: 14px; color: var(--ink-soft); font-size: 9px; line-height: 1.4; }
+    .portfolio-summary-hint strong { color: var(--teal-deep); }
     .portfolio-summary-card { min-width: 0; padding: 16px 17px 15px; color: var(--ink); font: inherit; text-align: left; background: rgba(255, 253, 249, .86); border: 1px solid var(--line); border-radius: 11px; }
     .portfolio-summary-card { scroll-snap-align: start; }
     button.portfolio-summary-card { width: 100%; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
@@ -1340,11 +1344,11 @@
     .portfolio-detail-block h4 { margin: 0 0 9px; color: var(--ink); font-size: 12px; }
     .portfolio-detail-block h4.portfolio-detail-subtitle { margin: 15px 0 9px; padding-top: 12px; border-top: 1px solid #e1ecec; }
     .portfolio-detail-table-wrap { overflow-x: auto; }
-    .portfolio-detail-table { width: 100%; min-width: 470px; border-collapse: collapse; }
+    .portfolio-detail-table { width: 100%; min-width: 540px; border-collapse: collapse; }
     .portfolio-detail-table th { padding: 7px 8px; color: var(--ink-soft); background: rgba(239, 247, 249, .8); font-size: 9px; font-weight: 800; text-align: left; white-space: nowrap; }
     .portfolio-detail-table th:last-child, .portfolio-detail-table td:last-child { text-align: right; }
     .portfolio-detail-table td { padding: 8px; border-top: 1px solid #e7eeee; color: var(--ink); font-size: 10px; white-space: nowrap; }
-    .portfolio-detail-table td:first-child { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .portfolio-detail-table td:first-child, .portfolio-detail-table td:nth-child(2) { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
     .portfolio-detail-table .portfolio-label-cell strong { font-size: 10px; }
     .portfolio-detail-table .portfolio-label-cell small { font-size: 9px; }
     .portfolio-detail-weight strong, .portfolio-detail-weight span { display: block; }
@@ -1363,6 +1367,7 @@
     .portfolio-pie-chart::after { position: absolute; inset: 25%; content: ""; background: #f7fcfb; border: 1px solid rgba(185, 221, 218, .7); border-radius: 50%; box-shadow: 0 1px 0 rgba(255, 255, 255, .8); }
     .portfolio-pie-center { position: absolute; z-index: 1; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--teal-deep); text-align: center; }
     .portfolio-pie-center strong { font-size: 20px; line-height: 1; }
+    .portfolio-pie-center strong.is-warning { color: #a64f54; font-size: 15px; }
     .portfolio-pie-center span { margin-top: 4px; color: var(--ink-soft); font-size: 9px; }
     .portfolio-pie-legend { display: grid; gap: 6px; max-height: 190px; overflow-y: auto; padding-right: 3px; }
     .portfolio-pie-legend-item { display: grid; grid-template-columns: 9px minmax(0, 1fr) auto; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 9px; }
@@ -1400,28 +1405,6 @@
     .portfolio-muted { color: var(--ink-soft); }
     .portfolio-residual-row { background: #fffaf2; }
     .portfolio-residual-row .portfolio-label-cell strong { color: var(--orange); }
-    .portfolio-holding-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px; margin-top: 15px; }
-    .portfolio-holding-card { min-width: 0; padding: 15px 16px 13px; background: rgba(255, 253, 249, .88); border: 1px solid var(--line); border-radius: 11px; }
-    .portfolio-holding-card.is-current { background: linear-gradient(145deg, #eef9f7, #fffdf9 70%); border-color: #b9ddda; box-shadow: 0 5px 16px rgba(27, 95, 91, .06); animation: portfolio-selection-enter .28s ease both; }
-    .portfolio-holding-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-    .portfolio-holding-card-index { display: block; color: var(--teal); font-size: 9px; font-weight: 850; letter-spacing: .08em; }
-    .portfolio-holding-card h3 { margin: 4px 0 0; color: var(--ink); font-size: 16px; letter-spacing: -.04em; }
-    .portfolio-holding-card-description { min-height: 31px; margin: 5px 0 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; }
-    .portfolio-holding-card-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 11px; }
-    .portfolio-holding-card-meta span { padding: 4px 6px; color: var(--teal-deep); background: #edf7f6; border-radius: 5px; font-size: 9px; font-weight: 800; }
-    .portfolio-holding-card-meta span.is-residual { color: #8a6428; background: #fff3dc; }
-    .portfolio-holding-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; gap: 0 16px; margin: 12px 0 0; padding: 0; list-style: none; }
-    .portfolio-holding-item { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 8px; min-width: 0; padding: 8px 0; border-top: 1px solid #e7eeee; }
-    .portfolio-holding-rank { color: var(--ink-soft); font-size: 9px; font-variant-numeric: tabular-nums; }
-    .portfolio-holding-main { min-width: 0; }
-    .portfolio-holding-title { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
-    .portfolio-holding-title strong { flex: 0 0 auto; color: var(--teal-deep); font-size: 11px; letter-spacing: .04em; }
-    .portfolio-holding-title span { min-width: 0; overflow: hidden; color: var(--ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
-    .portfolio-holding-sector { display: block; overflow: hidden; margin-top: 3px; color: var(--ink-soft); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
-    .portfolio-holding-weight { color: var(--teal-deep); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .portfolio-holding-item.is-residual { background: #fffaf2; }
-    .portfolio-holding-item.is-residual .portfolio-holding-title strong, .portfolio-holding-item.is-residual .portfolio-holding-weight { color: var(--orange); }
-    .portfolio-holding-card-foot { margin: 9px 0 0; padding-top: 9px; color: var(--ink-soft); border-top: 1px solid #e7eeee; font-size: 9px; line-height: 1.5; }
     .portfolio-sector-matrix-wrap { overflow-x: auto; margin-top: 17px; background: rgba(255, 253, 249, .86); border: 1px solid var(--line); border-radius: 11px; }
     .portfolio-sector-matrix { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0; }
     .portfolio-sector-matrix thead th { position: sticky; top: 0; z-index: 2; padding: 10px 12px; color: var(--ink-soft); background: var(--surface-blue); border-bottom: 1px solid #d9e6e9; font-size: 10px; font-weight: 800; text-align: right; white-space: nowrap; }
@@ -1524,8 +1507,6 @@
       .etf-legend { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .portfolio-kpi-grid { grid-template-columns: 1fr; }
       .portfolio-summary-grid { grid-auto-columns: minmax(240px, 86%); }
-      .portfolio-holding-board { grid-template-columns: 1fr; }
-      .portfolio-holding-list { grid-template-columns: 1fr; }
       .portfolio-detail-head { display: block; }
       .portfolio-detail-kpis { min-width: 0; margin-top: 13px; }
       .portfolio-pie-heading { display: block; }
@@ -1592,7 +1573,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .analysis-card { transition: none; }
-      .portfolio-summary-card, .portfolio-detail-panel, .portfolio-holding-card { animation: none !important; transition: none !important; }
+      .portfolio-summary-card, .portfolio-detail-panel { animation: none !important; transition: none !important; }
     }
 
     .moneycomics-report-content .report-stats {
@@ -1932,7 +1913,7 @@
             <span class="card-index">08 · PORTFOLIO</span>
             <span class="card-icon" aria-hidden="true">◫</span>
             <h3>포트폴리오 비교</h3>
-            <p>여러 포트폴리오의 종목 구성·비중·섹터 노출을 같은 표에 놓고 비교합니다. 현재 Random 1, Terra Portfolio, Sol Portfolio, Luna Portfolio를 등록했습니다.</p>
+            <p data-portfolio-card-copy>여러 포트폴리오의 종목 구성·비중·섹터 노출을 같은 표에 놓고 비교합니다. 현재 등록된 구성 전체를 비교합니다.</p>
             <span class="card-footer"><span>구성 비교하기</span><span>→</span></span>
           </button>
         </div>
@@ -2071,7 +2052,7 @@
     </main>
   </div>
 
-  <!-- ACTIVE DATA SOURCES: legacy script and inline blocks remain source of truth. Quant Trend reads only its optional null-safe app adapter. -->
+  <!-- ACTIVE DATA SOURCES: legacy script and inline blocks remain source of truth. Portfolio price data uses the Excel sync overlay as its canonical generated layer and validates the runtime contract below. Quant Trend reads only its optional null-safe app adapter. -->
   <script src="screen_low_pe_q1_2025.js"></script>
   <script src="data/app/quant-trend-snapshot.js"></script>
   <script src="data/app/portfolio-comparison-data.js?v=rename-random1-20260817"></script>
@@ -3160,16 +3141,40 @@
       const source = window.PORTFOLIO_COMPARISON_DATA || {};
       const portfolios = Array.isArray(source.portfolios) ? source.portfolios : [];
       return portfolios.map((portfolio) => {
-        const holdings = (Array.isArray(portfolio.holdings) ? portfolio.holdings : [])
-          .filter((holding) => holding && holding.ticker)
-          .map((holding) => ({ ...holding, weight: portfolioNumber(holding.weight) }));
+        const validationIssues = [];
+        const seenTickers = new Set();
+        const rawHoldings = Array.isArray(portfolio.holdings) ? portfolio.holdings : [];
+        if (!rawHoldings.length) validationIssues.push("구성 종목 없음");
+        const holdings = rawHoldings.reduce((validHoldings, holding, holdingIndex) => {
+          const ticker = String(holding?.ticker || "").trim();
+          if (!ticker) {
+            validationIssues.push(`종목 ${holdingIndex + 1}: 티커 없음`);
+            return validHoldings;
+          }
+          const tickerKey = ticker.toUpperCase();
+          if (seenTickers.has(tickerKey)) validationIssues.push(`${ticker}: 중복 티커`);
+          seenTickers.add(tickerKey);
+          const rawWeight = holding.weight;
+          const numericWeight = rawWeight == null || (typeof rawWeight === "string" && !rawWeight.trim()) ? NaN : Number(rawWeight);
+          let weight = Number.isFinite(numericWeight) ? numericWeight : 0;
+          if (!Number.isFinite(numericWeight)) validationIssues.push(`${ticker}: 비중 숫자 확인 필요`);
+          if (weight < 0) {
+            validationIssues.push(`${ticker}: 음수 비중`);
+            weight = 0;
+          }
+          if (weight > 100) validationIssues.push(`${ticker}: 단일 비중 100% 초과`);
+          validHoldings.push({ ...holding, ticker, weight });
+          return validHoldings;
+        }, []);
         const investedWeight = holdings.reduce((sum, holding) => sum + holding.weight, 0);
+        if (investedWeight > 100) validationIssues.push(`입력 비중 합계 ${portfolioFormatPercent(investedWeight)}: 100% 초과`);
         return {
           ...portfolio,
           holdings,
           investedWeight,
           residualWeight: Math.max(0, 100 - investedWeight),
-          overAllocated: Math.max(0, investedWeight - 100)
+          overAllocated: Math.max(0, investedWeight - 100),
+          validationIssues
         };
       });
     }
@@ -3242,19 +3247,24 @@
       if (normalizedMode === "stock" && portfolio.residualWeight > 0) {
         sourceItems.push({ label: "미배분·현금", detail: "잔여 비중", weight: portfolio.residualWeight });
       }
+      const totalWeight = sourceItems.reduce((sum, item) => sum + portfolioNumber(item.weight), 0);
+      const displayScale = totalWeight > 100 ? 100 / totalWeight : 1;
       let cursor = 0;
       const items = sourceItems.map((item, index) => {
         const start = cursor;
-        const end = cursor + item.weight;
+        const displayWeight = portfolioNumber(item.weight) * displayScale;
+        const end = cursor + displayWeight;
         cursor = end;
-        return { ...item, color: colors[index % colors.length], start, end };
+        return { ...item, color: colors[index % colors.length], start, end, displayWeight };
       });
       return {
         gradient: items.length ? items.map((item) => `${item.color} ${item.start}% ${item.end}%`).join(", ") : "#e5eeee 0 100%",
         items,
         mode: normalizedMode,
         title: normalizedMode === "stock" ? "주식별" : "섹터별",
-        centerLabel: normalizedMode === "stock" ? "주식 기준" : "섹터 기준"
+        centerLabel: normalizedMode === "stock" ? "주식 기준" : "섹터 기준",
+        centerValue: totalWeight > 100 ? `합계 ${portfolioFormatPercent(totalWeight)}` : "100%",
+        centerTone: totalWeight > 100 ? "warning" : "normal"
       };
     }
 
@@ -3269,17 +3279,68 @@
       return points.length >= 2 ? { ...source, points } : null;
     }
 
-    function portfolioPriceMissingObservationMarkup(data) {
-      const observations = Array.isArray(data?.missingObservations) ? data.missingObservations : [];
+    function portfolioPriceDataDiagnostics(portfolios) {
+      const source = window.PORTFOLIO_PRICE_DATA || {};
+      const issues = [];
+      if (!Array.isArray(source.dates) || source.dates.length < 2) issues.push("가격 날짜 열이 없거나 2개 미만입니다.");
+      const paths = source.portfolioPaths || {};
+      const prices = source.prices || {};
+      portfolios.forEach((portfolio, index) => {
+        if (!Array.isArray(paths[portfolio.id]) || paths[portfolio.id].length !== (source.dates || []).length) {
+          issues.push(`${portfolio.name || `포트폴리오 ${index + 1}`}: 가격 경로 길이 불일치`);
+        }
+        if (Array.isArray(source.portfolioNames) && source.portfolioNames[index] && source.portfolioNames[index] !== portfolio.name) {
+          issues.push(`${portfolio.name || `포트폴리오 ${index + 1}`}: 가격 파일 이름 매칭 불일치`);
+        }
+        portfolio.holdings.forEach((holding) => {
+          if (!Array.isArray(prices[holding.ticker]) || prices[holding.ticker].length !== (source.dates || []).length) {
+            issues.push(`${portfolio.name || `포트폴리오 ${index + 1}`}/${holding.ticker}: 원자료 가격 열 불일치`);
+          }
+        });
+      });
+      return issues;
+    }
+
+    function portfolioPricePath(points, xScale, yScale, offset = 0) {
+      const segments = [];
+      let segment = [];
+      let previousSourceIndex = null;
+      points.forEach((point, pointIndex) => {
+        const sourceIndex = Number.isFinite(point.sourceIndex) ? point.sourceIndex : pointIndex + offset;
+        if (segment.length && sourceIndex !== previousSourceIndex + 1) {
+          segments.push(segment.join(" "));
+          segment = [];
+        }
+        segment.push(`${segment.length ? "L" : "M"}${xScale(sourceIndex).toFixed(2)} ${yScale(point.value).toFixed(2)}`);
+        previousSourceIndex = sourceIndex;
+      });
+      if (segment.length) segments.push(segment.join(" "));
+      return segments.join(" ");
+    }
+
+    function portfolioPriceMissingObservationMarkup(data, portfolio = null) {
+      const holdingTickers = portfolio
+        ? new Set((portfolio.holdings || []).map((holding) => String(holding.ticker || "").trim().toUpperCase()).filter(Boolean))
+        : null;
+      const observations = (Array.isArray(data?.missingObservations) ? data.missingObservations : [])
+        .filter((item) => !holdingTickers || holdingTickers.has(String(item.ticker || "").trim().toUpperCase()));
       if (!observations.length) return "";
       const labels = observations.map((item) => `${item.ticker || "종목"} ${portfolioPriceDate(item.date)}`).join(", ");
-      return `<div class="portfolio-price-data-note"><strong>원자료 공란</strong><span>${valuationEscape(labels)}</span><div>Excel Sheet1의 원자료가 비어 있는 날짜는 임의 보정하지 않고 그래프에서도 해당 날짜를 건너뜁니다.</div></div>`;
+      const heading = portfolio ? "선택 구성 원자료 공란" : "원자료 공란";
+      const detail = portfolio
+        ? "선택한 구성에 포함된 종목의 빈 날짜는 임의 보정하지 않고 그래프에서도 선을 끊어 표시합니다."
+        : "Excel Sheet1의 원자료가 비어 있는 날짜는 임의 보정하지 않고 해당 구성의 선을 끊어 표시합니다.";
+      return `<div class="portfolio-price-data-note"><strong>${heading}</strong><span>${valuationEscape(labels)}</span><div>${detail}</div></div>`;
     }
 
     function portfolioPriceIndex(value) {
       return Number.isFinite(value)
         ? value.toLocaleString("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : "—";
+    }
+
+    function portfolioPriceSignedPercent(value) {
+      return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(2)}%` : "—";
     }
 
     function portfolioPriceDate(value) {
@@ -3351,6 +3412,9 @@
       const actualChange = lifecycle && lifecycle.creationIndex >= 0 && lifecycle.actualCount >= 2 && actualStartValue
         ? (last / actualStartValue - 1) * 100
         : null;
+      const referenceChange = lifecycle && lifecycle.creationIndex >= 0 && first && actualStartValue
+        ? (actualStartValue / first - 1) * 100
+        : change;
       const chartWidth = 860;
       const chartHeight = 282;
       const margin = { top: 20, right: 18, bottom: 39, left: 52 };
@@ -3362,14 +3426,15 @@
       const dateCount = Array.isArray(data.dates) && data.dates.length ? data.dates.length : points.length;
       const xScale = (pointIndex) => margin.left + (pointIndex / Math.max(1, dateCount - 1)) * plotWidth;
       const yScale = (value) => margin.top + (domainMax - value) / Math.max(1, domainMax - domainMin) * plotHeight;
-      const path = points.map((point, pointIndex) => `${pointIndex === 0 ? "M" : "L"}${xScale(point.sourceIndex ?? pointIndex).toFixed(2)} ${yScale(point.value).toFixed(2)}`).join(" ");
+      const path = portfolioPricePath(points, xScale, yScale);
       const referencePath = lifecycle && lifecycle.creationIndex >= 0
-        ? points.slice(0, lifecycle.creationIndex + 1).map((point, pointIndex) => `${pointIndex === 0 ? "M" : "L"}${xScale(point.sourceIndex ?? pointIndex).toFixed(2)} ${yScale(point.value).toFixed(2)}`).join(" ")
+        ? portfolioPricePath(points.slice(0, lifecycle.creationIndex + 1), xScale, yScale)
         : path;
       const actualPath = lifecycle && lifecycle.creationIndex >= 0
-        ? points.slice(lifecycle.creationIndex).map((point, pointIndex) => `${pointIndex === 0 ? "M" : "L"}${xScale(point.sourceIndex ?? pointIndex + lifecycle.creationIndex).toFixed(2)} ${yScale(point.value).toFixed(2)}`).join(" ")
+        ? portfolioPricePath(points.slice(lifecycle.creationIndex), xScale, yScale, lifecycle.creationIndex)
         : "";
-      const area = `${path} L${xScale(points.at(-1)?.sourceIndex ?? points.length - 1).toFixed(2)} ${(chartHeight - margin.bottom).toFixed(2)} L${xScale(points[0]?.sourceIndex ?? 0).toFixed(2)} ${(chartHeight - margin.bottom).toFixed(2)} Z`;
+      const hasPriceGaps = points.some((point, pointIndex) => pointIndex > 0 && point.sourceIndex !== points[pointIndex - 1].sourceIndex + 1);
+      const area = hasPriceGaps ? "" : `${path} L${xScale(points.at(-1)?.sourceIndex ?? points.length - 1).toFixed(2)} ${(chartHeight - margin.bottom).toFixed(2)} L${xScale(points[0]?.sourceIndex ?? 0).toFixed(2)} ${(chartHeight - margin.bottom).toFixed(2)} Z`;
       const yTicks = Array.from({ length: 4 }, (_, tickIndex) => domainMin + (domainMax - domainMin) * tickIndex / 3);
       const grid = yTicks.map((value) => {
         const y = yScale(value).toFixed(2);
@@ -3383,8 +3448,9 @@
       const lifecycleSvg = portfolioLifecycleSvgMarkup(data, points, xScale, chartWidth, chartHeight, margin, plotHeight);
       const lifecycleNote = portfolioLifecycleNoteMarkup(data, points);
       const changeClass = actualChange === null ? "pending" : actualChange >= 0 ? "positive" : "negative";
+      const referenceChangeClass = referenceChange >= 0 ? "positive" : "negative";
       const priceStats = lifecycle && lifecycle.creationIndex >= 0
-        ? `<div class="price-chart-stat"><span>참고 시작값</span><strong>${portfolioPriceIndex(first)}</strong></div><div class="price-chart-stat"><span>생성일 값</span><strong>${portfolioPriceIndex(actualStartValue)}</strong></div><div class="price-chart-stat"><span>마지막</span><strong>${portfolioPriceIndex(last)}</strong></div><div class="price-chart-stat"><span>실제 변화</span><strong class="${changeClass}">${actualChange === null ? "대기" : `${actualChange >= 0 ? "+" : ""}${actualChange.toFixed(2)}%`}</strong></div><div class="price-chart-stat"><span>참고/실제</span><strong>${lifecycle.referenceCount}일 / ${lifecycle.actualCount}일</strong></div>`
+        ? `<div class="price-chart-stat"><span>참고 시작값</span><strong>${portfolioPriceIndex(first)}</strong></div><div class="price-chart-stat"><span>생성일 값</span><strong>${portfolioPriceIndex(actualStartValue)}</strong></div><div class="price-chart-stat"><span>마지막</span><strong>${portfolioPriceIndex(last)}</strong></div><div class="price-chart-stat"><span>참고 변화</span><strong class="${referenceChangeClass}">${referenceChange >= 0 ? "+" : ""}${referenceChange.toFixed(2)}%</strong></div><div class="price-chart-stat"><span>실제 변화</span><strong class="${changeClass}">${actualChange === null ? "대기" : `${actualChange >= 0 ? "+" : ""}${actualChange.toFixed(2)}%`}</strong></div><div class="price-chart-stat"><span>참고/실제</span><strong>${lifecycle.referenceCount}일 / ${lifecycle.actualCount}일</strong></div>`
         : `<div class="price-chart-stat"><span>시작값</span><strong>${portfolioPriceIndex(first)}</strong></div><div class="price-chart-stat"><span>마지막</span><strong>${portfolioPriceIndex(last)}</strong></div><div class="price-chart-stat"><span>누적 변화</span><strong class="${changeClass}">${change >= 0 ? "+" : ""}${change.toFixed(2)}%</strong></div><div class="price-chart-stat"><span>관측일</span><strong>${points.length}일</strong></div>`;
       const sourceSheets = data.sourceSheets || {};
       const sourceLabel = `${data.sourceWorkbook || "Excel 원자료"} · ${sourceSheets.raw || "Sheet1"}/${sourceSheets.portfolioPaths || "Sheet2"}`;
@@ -3400,17 +3466,17 @@
           ${grid}
           <line class="price-chart-axis-line" x1="${margin.left}" y1="${chartHeight - margin.bottom}" x2="${chartWidth - margin.right}" y2="${chartHeight - margin.bottom}"></line>
           ${xTicks}
-          <path class="price-chart-area" d="${area}"></path>
+          ${area ? `<path class="price-chart-area" d="${area}"></path>` : ""}
           ${lifecycle && lifecycle.creationIndex >= 0 ? `<path class="price-chart-line is-reference" d="${referencePath}"></path><path class="price-chart-line is-actual" d="${actualPath}"></path>` : `<path class="price-chart-line" d="${path}"></path>`}
           <circle class="price-chart-dot" cx="${xScale(points[0]?.sourceIndex ?? 0).toFixed(2)}" cy="${yScale(first).toFixed(2)}" r="4"></circle>
           <circle class="price-chart-dot" cx="${xScale(points.at(-1)?.sourceIndex ?? points.length - 1).toFixed(2)}" cy="${yScale(last).toFixed(2)}" r="4"></circle>
-          <rect class="portfolio-price-hover-hit" data-portfolio-price-hit x="${margin.left}" y="${margin.top}" width="${plotWidth}" height="${plotHeight}" fill="transparent" aria-label="날짜별 포트폴리오 값 보기"></rect>
+          <rect class="portfolio-price-hover-hit" data-portfolio-price-hit x="${margin.left}" y="${margin.top}" width="${plotWidth}" height="${plotHeight}" fill="transparent" tabindex="0" focusable="true" role="img" aria-label="날짜별 포트폴리오 값 보기. 왼쪽과 오른쪽 화살표로 날짜를 이동할 수 있습니다."></rect>
           <line class="portfolio-price-hover-guide" data-portfolio-price-guide x1="0" y1="${margin.top}" x2="0" y2="${chartHeight - margin.bottom}" display="none"></line>
           <g data-portfolio-price-markers></g>
         </svg>
         <div class="portfolio-price-tooltip" role="status" aria-live="polite"></div>
         <div class="price-chart-source"><span>${escape(sourceLabel)} · 기준일 요청 ${escape(data.requestedAsOf || "2026-08-16")}</span><span>마지막 관측일 ${escape(data.lastTradingDate || points.at(-1).date)} · ${escape(data.priceSource || "일간 종가")}</span></div>
-        ${portfolioPriceMissingObservationMarkup(data)}
+        ${portfolioPriceMissingObservationMarkup(data, portfolio)}
         ${lifecycleNote}
       </div>`;
     }
@@ -3431,12 +3497,16 @@
         const actualChange = lifecycle && lifecycle.creationIndex >= 0 && lifecycle.actualCount >= 2 && actualStartValue
           ? (last / actualStartValue - 1) * 100
           : null;
+        const referenceChange = lifecycle && lifecycle.creationIndex >= 0 && first && actualStartValue
+          ? (actualStartValue / first - 1) * 100
+          : (first ? (last / first - 1) * 100 : null);
         return {
           portfolio,
           data,
           color: colors[index % colors.length],
           lineStyle: lineStyles[index % lineStyles.length],
           change: actualChange,
+          referenceChange,
           changeLabel: lifecycle && lifecycle.creationIndex >= 0 ? (lifecycle.actualCount >= 2 ? "실제" : "실제 대기") : "누적",
           actualCount: lifecycle?.actualCount || data.points.length
         };
@@ -3460,7 +3530,7 @@
       const dateCount = Array.isArray(series[0].data.dates) && series[0].data.dates.length ? series[0].data.dates.length : points.length;
       const xScale = (pointIndex) => margin.left + (pointIndex / Math.max(1, dateCount - 1)) * plotWidth;
       const yScale = (value) => margin.top + (domainMax - value) / Math.max(1, domainMax - domainMin) * plotHeight;
-      const pathFor = (item, pointsToPlot = item.data.points, offset = 0) => pointsToPlot.map((point, pointIndex) => `${pointIndex === 0 ? "M" : "L"}${xScale(point.sourceIndex ?? pointIndex + offset).toFixed(2)} ${yScale(point.value).toFixed(2)}`).join(" ");
+      const pathFor = (item, pointsToPlot = item.data.points, offset = 0) => portfolioPricePath(pointsToPlot, xScale, yScale, offset);
       const yTicks = Array.from({ length: 4 }, (_, tickIndex) => domainMin + (domainMax - domainMin) * tickIndex / 3);
       const grid = yTicks.map((value) => {
         const y = yScale(value).toFixed(2);
@@ -3486,7 +3556,12 @@
         const lastPoint = item.data.points.at(-1);
         return `<circle class="portfolio-comparison-dot" style="--series-color:${item.color};" cx="${xScale(lastPoint?.sourceIndex ?? item.data.points.length - 1).toFixed(2)}" cy="${yScale(lastPoint.value).toFixed(2)}" r="4"></circle>`;
       }).join("");
-      const legend = series.map((item) => `<div class="portfolio-comparison-legend-item"><i class="${item.lineStyle}" style="--series-color:${item.color};" aria-hidden="true"></i><span>${escape(item.portfolio.name || "Portfolio")}</span><strong class="${item.change === null ? "is-pending" : ""}">${escape(item.changeLabel)}${item.change === null ? "" : ` ${item.change >= 0 ? "+" : ""}${item.change.toFixed(2)}%`}</strong></div>`).join("");
+      const legend = series.map((item) => {
+        const changeText = item.change === null
+          ? `${item.changeLabel} · 참고 ${portfolioPriceSignedPercent(item.referenceChange)}`
+          : `실제 ${portfolioPriceSignedPercent(item.change)} · 참고 ${portfolioPriceSignedPercent(item.referenceChange)}`;
+        return `<div class="portfolio-comparison-legend-item"><i class="${item.lineStyle}" style="--series-color:${item.color};" aria-hidden="true"></i><span>${escape(item.portfolio.name || "Portfolio")}</span><strong class="${item.change === null ? "is-pending" : ""}">${escape(changeText)}</strong></div>`;
+      }).join("");
       const actualCount = series.length ? Math.min(...series.map((item) => item.actualCount)) : 0;
       const unavailableNote = unavailablePortfolios.length
         ? `<div class="portfolio-price-data-note"><strong>가격 원자료 대기</strong><span>${escape(unavailablePortfolios.map((portfolio) => portfolio.name || "포트폴리오").join(", "))}</span><div>현재 Excel 원자료에 해당 구성의 가격 열이 없어 그래프에서 제외했습니다. 가격 자료가 추가되면 비교선에 자동으로 포함됩니다.</div></div>`
@@ -3510,7 +3585,7 @@
           ${xTicks}
           ${paths}
           ${endpoints}
-          <rect class="portfolio-price-hover-hit" data-portfolio-price-hit x="${margin.left}" y="${margin.top}" width="${plotWidth}" height="${plotHeight}" fill="transparent" aria-label="날짜별 포트폴리오 값 비교"></rect>
+          <rect class="portfolio-price-hover-hit" data-portfolio-price-hit x="${margin.left}" y="${margin.top}" width="${plotWidth}" height="${plotHeight}" fill="transparent" tabindex="0" focusable="true" role="img" aria-label="날짜별 포트폴리오 값 비교. 왼쪽과 오른쪽 화살표로 날짜를 이동할 수 있습니다."></rect>
           <line class="portfolio-price-hover-guide" data-portfolio-price-guide x1="0" y1="${margin.top}" x2="0" y2="${chartHeight - margin.bottom}" display="none"></line>
           <g data-portfolio-price-markers></g>
         </svg>
@@ -3563,32 +3638,27 @@
         const domainMax = maximum + spread * .08;
         const yScale = (value) => margin.top + (domainMax - value) / Math.max(1, domainMax - domainMin) * plotHeight;
         const escape = valuationEscape;
+        let keyboardSourceIndex = 0;
         const hideTooltip = () => {
           tooltip.style.display = "none";
           guide.setAttribute("display", "none");
           markers.innerHTML = "";
         };
-        const showTooltip = (event) => {
-          const box = svg.getBoundingClientRect();
-          if (!box.width || !box.height) return;
-          const ratio = Math.max(0, Math.min(1, (event.clientX - box.left) / box.width));
-          const viewX = Math.max(margin.left, Math.min(chartWidth - margin.right, ratio * chartWidth));
-          const fraction = (viewX - margin.left) / Math.max(1, plotWidth) * Math.max(0, dateCount - 1);
-          const nearestSourceIndex = Math.max(0, Math.min(dateCount - 1, Math.round(fraction)));
-          const date = series[0].data.dates?.[nearestSourceIndex] || points.find((point) => point.sourceIndex === nearestSourceIndex)?.date || "";
+        const renderTooltipAtSourceIndex = (sourceIndex, viewX) => {
+          const date = series[0].data.dates?.[sourceIndex] || points.find((point) => point.sourceIndex === sourceIndex)?.date || "";
           const rows = series.map((item) => {
-            const itemPoint = item.data.points.find((point) => point.sourceIndex === nearestSourceIndex);
-            return itemPoint && Number.isFinite(itemPoint.value) ? { ...item, value: itemPoint.value } : null;
-          }).filter(Boolean);
-          if (!rows.length) {
+            const itemPoint = item.data.points.find((point) => point.sourceIndex === sourceIndex);
+            return { ...item, value: itemPoint?.value, missing: !itemPoint || !Number.isFinite(itemPoint.value) };
+          });
+          if (!date || !rows.length) {
             hideTooltip();
             return;
           }
           guide.setAttribute("x1", viewX.toFixed(2));
           guide.setAttribute("x2", viewX.toFixed(2));
           guide.setAttribute("display", "block");
-          markers.innerHTML = rows.map((item) => `<circle class="portfolio-price-hover-dot" style="--series-color:${item.color};" cx="${viewX.toFixed(2)}" cy="${yScale(item.value).toFixed(2)}" r="4"></circle>`).join("");
-          tooltip.innerHTML = `<strong>${escape(portfolioPriceDate(date))}</strong>${rows.map((item) => `<span><b>${escape(item.portfolio.name || "포트폴리오")}</b> ${portfolioPriceIndex(item.value)}</span>`).join("")}`;
+          markers.innerHTML = rows.filter((item) => !item.missing).map((item) => `<circle class="portfolio-price-hover-dot" style="--series-color:${item.color};" cx="${viewX.toFixed(2)}" cy="${yScale(item.value).toFixed(2)}" r="4"></circle>`).join("");
+          tooltip.innerHTML = `<strong>${escape(portfolioPriceDate(date))}</strong>${rows.map((item) => item.missing ? `<span class="is-missing"><b>${escape(item.portfolio.name || "포트폴리오")}</b> 원자료 없음</span>` : `<span><b>${escape(item.portfolio.name || "포트폴리오")}</b> ${portfolioPriceIndex(item.value)}</span>`).join("")}`;
           tooltip.style.display = "block";
           const shellBox = shell.getBoundingClientRect();
           const svgBox = svg.getBoundingClientRect();
@@ -3597,8 +3667,37 @@
           tooltip.style.left = `${Math.max(8, Math.min(shell.clientWidth - tooltip.offsetWidth - 8, left))}px`;
           tooltip.style.top = `${Math.max(8, svgBox.top - shellBox.top + 10)}px`;
         };
+        const showTooltip = (event) => {
+          const box = svg.getBoundingClientRect();
+          if (!box.width || !box.height) return;
+          const ratio = Math.max(0, Math.min(1, (event.clientX - box.left) / box.width));
+          const viewX = Math.max(margin.left, Math.min(chartWidth - margin.right, ratio * chartWidth));
+          const fraction = (viewX - margin.left) / Math.max(1, plotWidth) * Math.max(0, dateCount - 1);
+          const nearestSourceIndex = Math.max(0, Math.min(dateCount - 1, Math.round(fraction)));
+          keyboardSourceIndex = nearestSourceIndex;
+          renderTooltipAtSourceIndex(nearestSourceIndex, viewX);
+        };
+        const showTooltipAtSourceIndex = (sourceIndex) => {
+          keyboardSourceIndex = Math.max(0, Math.min(dateCount - 1, sourceIndex));
+          const viewX = margin.left + (keyboardSourceIndex / Math.max(1, dateCount - 1)) * plotWidth;
+          renderTooltipAtSourceIndex(keyboardSourceIndex, viewX);
+        };
         hit.addEventListener("pointermove", showTooltip);
-        hit.addEventListener("pointerleave", hideTooltip);
+        hit.addEventListener("pointerleave", () => {
+          if (document.activeElement !== hit) hideTooltip();
+        });
+        hit.addEventListener("focus", () => showTooltipAtSourceIndex(0));
+        hit.addEventListener("blur", hideTooltip);
+        hit.addEventListener("keydown", (event) => {
+          let nextIndex = keyboardSourceIndex;
+          if (event.key === "ArrowLeft") nextIndex -= 1;
+          else if (event.key === "ArrowRight") nextIndex += 1;
+          else if (event.key === "Home") nextIndex = 0;
+          else if (event.key === "End") nextIndex = dateCount - 1;
+          else return;
+          event.preventDefault();
+          showTooltipAtSourceIndex(nextIndex);
+        });
       });
     }
 
@@ -3613,19 +3712,23 @@
       const holdingRows = portfolio.holdings.map((holding, holdingIndex) => `
         <tr>
           <td>${String(holdingIndex + 1).padStart(2, "0")}</td>
+          <td>${escape(holding.sourceRank == null ? "—" : holding.sourceRank)}</td>
           <td class="portfolio-label-cell"><strong>${escape(holding.ticker)}</strong><small>${escape(holding.company || "—")}</small></td>
           <td>${escape(holding.sector || "분류 보류")}</td>
           <td class="portfolio-detail-weight"><strong>${portfolioFormatPercent(holding.weight)}</strong><span>전체 비중</span></td>
         </tr>
       `).join("");
       const breakdownRows = pie.items.map((item) => {
-        const width = Math.max(0, Math.min(100, item.weight));
+        const width = Math.max(0, Math.min(100, item.displayWeight ?? item.weight));
         return `<div class="portfolio-detail-sector">
           <div class="portfolio-detail-sector-head"><strong>${escape(item.label)}</strong><span>${portfolioFormatPercent(item.weight)}</span></div>
           <div class="portfolio-detail-sector-track"><i style="width:${width}%;"></i></div>
         </div>`;
       }).join("");
       const pieLegend = pie.items.map((item) => `<div class="portfolio-pie-legend-item" title="${escape(`${item.label} ${item.detail || ""}`)}"><i style="background:${item.color};"></i><span><strong>${escape(item.label)}</strong><small>${escape(item.detail || "")}</small></span><strong>${portfolioFormatPercent(item.weight)}</strong></div>`).join("");
+      const validationNote = portfolio.validationIssues?.length
+        ? `<div class="portfolio-price-data-note"><strong>입력 데이터 점검</strong><span>${escape(portfolio.validationIssues.join(" · "))}</span><div>비어 있거나 숫자가 아닌 비중·음수 비중은 화면 계산에서 안전값 0으로 처리했으며, 원자료 자체는 수정하지 않았습니다.</div></div>`
+        : "";
       return `<section class="portfolio-detail-panel" id="portfolio-detail" aria-live="polite" tabindex="-1">
         <div class="portfolio-detail-head">
           <div>
@@ -3646,8 +3749,8 @@
             <h4>종목별 구성</h4>
             <div class="portfolio-detail-table-wrap">
               <table class="portfolio-detail-table" aria-label="${escape(`${portfolio.name || "포트폴리오"} 종목별 구성`)}">
-                <thead><tr><th>#</th><th>종목·기업</th><th>분류</th><th>비중</th></tr></thead>
-                <tbody>${holdingRows}${portfolio.residualWeight > 0 ? `<tr class="portfolio-residual-row"><td>—</td><td class="portfolio-label-cell"><strong>—</strong><small>미배분·현금</small></td><td>현금</td><td class="portfolio-detail-weight"><strong>${portfolioFormatPercent(portfolio.residualWeight)}</strong><span>잔여 비중</span></td></tr>` : ""}</tbody>
+                <thead><tr><th>입력 순번</th><th>원자료 순위</th><th>종목·기업</th><th>분류</th><th>비중</th></tr></thead>
+                <tbody>${holdingRows}${portfolio.residualWeight > 0 ? `<tr class="portfolio-residual-row"><td>—</td><td>—</td><td class="portfolio-label-cell"><strong>—</strong><small>미배분·현금</small></td><td>현금</td><td class="portfolio-detail-weight"><strong>${portfolioFormatPercent(portfolio.residualWeight)}</strong><span>잔여 비중</span></td></tr>` : ""}</tbody>
               </table>
             </div>
           </div>
@@ -3664,7 +3767,7 @@
             </div>
             <div class="portfolio-detail-visual">
               <div class="portfolio-pie-chart" role="img" aria-label="${escape(`${portfolio.name || "포트폴리오"}의 ${pie.title} 비중 원 그래프`)}" style="background: conic-gradient(from -90deg, ${pie.gradient});">
-                <div class="portfolio-pie-center"><strong>100%</strong><span>${pie.centerLabel}</span></div>
+                <div class="portfolio-pie-center"><strong class="${pie.centerTone === "warning" ? "is-warning" : ""}">${escape(pie.centerValue || "100%")}</strong><span>${pie.centerLabel}</span></div>
               </div>
               <div class="portfolio-pie-legend">${pieLegend}</div>
             </div>
@@ -3672,6 +3775,7 @@
             <div class="portfolio-detail-sector-list">${breakdownRows}</div>
           </div>
         </div>
+        ${validationNote}
         <p class="portfolio-detail-note">입력된 티커와 비중을 그대로 보여줍니다. 여기서 표시하는 섹터는 포트폴리오 간 구성을 비교하기 위한 화면용 분류이며, 가격 성과나 투자 추천을 의미하지 않습니다.</p>
       </section>`;
     }
@@ -3686,7 +3790,7 @@
       const selectedIndex = Math.min(Math.max(portfolioSelectedIndex, 0), portfolios.length - 1);
       portfolioSelectedIndex = selectedIndex;
       const summaryCards = portfolios.map((portfolio, index) => {
-        const status = portfolio.overAllocated > 0 ? "합계 점검" : portfolio.residualWeight > 0 ? `현금 ${portfolioFormatPercent(portfolio.residualWeight)}` : "";
+        const status = portfolio.validationIssues?.length ? "데이터 점검" : portfolio.overAllocated > 0 ? "합계 점검" : portfolio.residualWeight > 0 ? `현금 ${portfolioFormatPercent(portfolio.residualWeight)}` : "";
         const selected = index === selectedIndex;
         return `<button class="portfolio-summary-card ${index === 0 ? "is-primary" : ""}${selected ? " is-selected" : ""}" type="button" data-portfolio-select="${index}" aria-label="${escape(`${portfolio.name || `Portfolio ${index + 1}`} 구성 보기`)}" aria-pressed="${selected}">
           <div class="portfolio-summary-card-head"><span>${String(index + 1).padStart(2, "0")} · 구성</span>${status ? `<span>${escape(status)}</span>` : ""}</div>
@@ -3707,6 +3811,10 @@
         ["미배분·현금", (portfolio) => portfolioFormatPercent(portfolio.residualWeight)],
         ["섹터 수", (portfolio) => `${portfolioSectorTotals(portfolio).filter((item) => item.sector !== "미배분·현금").length}개`]
       ].map(([label, value]) => `<tr><th scope="row">${escape(label)}</th>${portfolios.map((portfolio) => `<td>${escape(value(portfolio))}</td>`).join("")}</tr>`).join("");
+
+      const summaryHint = portfolios.length > 1
+        ? `<div class="portfolio-summary-hint"><span><strong>${portfolios.length}개 구성</strong>을 비교 중입니다.</span><span>← 좌우로 넘겨 전체 카드 보기</span></div>`
+        : "";
 
       const sectorRows = portfolioSectorNames(portfolios).map((sector) => {
         const isResidual = sector === "미배분·현금";
@@ -3729,6 +3837,8 @@
         ? `<div class="portfolio-compare-note"><strong>비교 대기.</strong> 현재는 포트폴리오 1개만 등록되어 있습니다. 두 번째 구성을 추가하면 같은 표에서 종목·섹터 비중 차이를 바로 비교할 수 있습니다. 정규화 가격 경로는 선택한 구성 아래에서 확인합니다.</div>`
         : `<div class="portfolio-compare-note"><strong>${portfolios.length}개 구성 비교 중.</strong> 현재 표는 입력된 구성과 비중을 비교하고, 선택한 구성 아래에 Excel 원자료 기반 정규화 가격 경로를 표시합니다. 배당·수수료·환율을 포함한 총수익률·변동성·최대낙폭은 별도 계산하지 않습니다.</div>`;
       const overAllocated = portfolios.filter((portfolio) => portfolio.overAllocated > 0);
+      const validationPortfolios = portfolios.filter((portfolio) => portfolio.validationIssues?.length);
+      const priceDataIssues = portfolioPriceDataDiagnostics(portfolios);
       const allocationSummary = portfolios.map((portfolio) => {
         const usesEqualTenWeights = portfolio.holdings.length > 0 && portfolio.holdings.every((holding) => holding.weight === 10);
         const summary = usesEqualTenWeights
@@ -3738,9 +3848,16 @@
           ? `${portfolio.name || "포트폴리오"}: ${summary}, 남은 ${portfolioFormatPercent(portfolio.residualWeight)}는 미배분·현금`
           : `${portfolio.name || "포트폴리오"}: ${summary}`;
       }).join(" · ");
-      const allocationWarning = overAllocated.length
-        ? `<div class="portfolio-callout"><strong>합계 점검 필요.</strong> ${escape(overAllocated.map((portfolio) => portfolio.name || "포트폴리오").join(", "))}의 입력 비중이 100%를 초과했습니다.</div>`
-        : `<div class="portfolio-callout"><strong>합계 확인.</strong> ${escape(allocationSummary)}.</div>`;
+      const validationSummary = validationPortfolios.map((portfolio) => `${portfolio.name || "포트폴리오"}: ${portfolio.validationIssues.join(", ")}`).join(" · ");
+      const allocationWarningParts = [];
+      if (validationSummary) allocationWarningParts.push(`<div class="portfolio-callout"><strong>입력 데이터 점검.</strong> ${escape(validationSummary)}</div>`);
+      if (priceDataIssues.length) allocationWarningParts.push(`<div class="portfolio-callout"><strong>가격 데이터 연결 점검.</strong> ${escape(priceDataIssues.join(" · "))}</div>`);
+      if (overAllocated.length) {
+        allocationWarningParts.push(`<div class="portfolio-callout"><strong>합계 점검 필요.</strong> ${escape(overAllocated.map((portfolio) => portfolio.name || "포트폴리오").join(", "))}의 입력 비중이 100%를 초과했습니다.</div>`);
+      } else if (!validationSummary) {
+        allocationWarningParts.push(`<div class="portfolio-callout"><strong>합계 확인.</strong> ${escape(allocationSummary)}.</div>`);
+      }
+      const allocationWarning = allocationWarningParts.join("");
 
       return `
         <section class="report-section blue" id="flow">
@@ -3759,7 +3876,8 @@
           <p class="eyebrow">Portfolio comparison</p>
           <h2>등록된 포트폴리오</h2>
           <p class="section-lead">위 카드를 선택하면 해당 구성의 종목 목록과 비중을 한 번만 펼쳐서 확인할 수 있습니다. 아래 표와 섹터 표는 포트폴리오 간 합계·노출 비교에 집중합니다.</p>
-          <div class="portfolio-summary-grid">${summaryCards}</div>
+          ${summaryHint}
+          <div class="portfolio-summary-grid" aria-label="포트폴리오 선택 카드">${summaryCards}</div>
           ${portfolioPriceComparisonMarkup(portfolios)}
           ${renderPortfolioDetail(portfolios[selectedIndex], selectedIndex)}
           <div class="portfolio-table-wrap">
@@ -6562,6 +6680,10 @@
       } else {
         moneyComicsSelectedId = null;
       }
+      if (id === "portfolio" && Number.isInteger(options.portfolioIndex)) {
+        const portfolioCount = portfolioDataset().length;
+        portfolioSelectedIndex = portfolioCount ? Math.min(Math.max(options.portfolioIndex, 0), portfolioCount - 1) : 0;
+      }
 
       const activeStats = id === "moneycomics" ? moneyComicsSummaryStats() : id === "quanttrend" ? (() => {
         const stats = quantTrendStats(quantTrendDataset());
@@ -6599,8 +6721,12 @@
 
       breadcrumb.textContent = `분석 선택 / ${report.title}`;
       setView("detail");
-      const reportHash = id === "moneycomics" && moneyComicsSelectedId ? `#moneycomics/video/${encodeURIComponent(moneyComicsSelectedId)}` : `#${id}`;
-      window.history.replaceState({ report: id, videoId: moneyComicsSelectedId }, "", reportHash);
+      const reportHash = id === "moneycomics" && moneyComicsSelectedId
+        ? `#moneycomics/video/${encodeURIComponent(moneyComicsSelectedId)}`
+        : id === "portfolio"
+          ? `#portfolio/${portfolioSelectedIndex + 1}`
+          : `#${id}`;
+      window.history.replaceState({ report: id, videoId: moneyComicsSelectedId, portfolioIndex: id === "portfolio" ? portfolioSelectedIndex : null }, "", reportHash);
       if (isEmbeddedReddit) mountEmbeddedReddit();
       bindReportNavigation();
       if (id === "portfolio") bindPortfolioInteractions();
@@ -6639,14 +6765,17 @@
             item.classList.toggle("is-selected", selected);
             item.setAttribute("aria-pressed", String(selected));
           });
-          document.querySelectorAll(".portfolio-holding-card").forEach((card, cardIndex) => {
-            card.classList.toggle("is-current", cardIndex === index);
-          });
           const currentDetail = document.getElementById("portfolio-detail");
           if (!currentDetail) return;
           currentDetail.outerHTML = renderPortfolioDetail(portfolio, index);
+          window.history.replaceState({ report: "portfolio", portfolioIndex: index }, "", `#portfolio/${index + 1}`);
           bindPortfolioPieInteractions();
           bindPortfolioPriceChartInteractions();
+          const nextDetail = document.getElementById("portfolio-detail");
+          if (nextDetail) {
+            nextDetail.focus({ preventScroll: true });
+            nextDetail.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         });
       });
       bindPortfolioPieInteractions();
@@ -6693,8 +6822,11 @@
     function renderFromLocation() {
       const currentHash = window.location.hash.slice(1);
       const detailMatch = currentHash.match(/^moneycomics\/video\/(.+)$/);
+      const portfolioMatch = currentHash.match(/^portfolio(?:\/(\d+))?$/);
       if (detailMatch) {
         renderReport("moneycomics", { videoId: decodeURIComponent(detailMatch[1]) });
+      } else if (portfolioMatch) {
+        renderReport("portfolio", { portfolioIndex: portfolioMatch[1] ? Number(portfolioMatch[1]) - 1 : 0 });
       } else if (currentHash && reports[currentHash]) {
         renderReport(currentHash);
       } else if (!currentHash) {
@@ -6702,6 +6834,14 @@
       }
     }
 
+    function syncPortfolioHomeCard() {
+      const copy = document.querySelector("[data-portfolio-card-copy]");
+      const portfolios = portfolioDataset();
+      if (!copy || !portfolios.length) return;
+      copy.textContent = `여러 포트폴리오의 종목 구성·비중·섹터 노출을 같은 표에 놓고 비교합니다. 현재 ${portfolios.length}개 포트폴리오를 등록했습니다.`;
+    }
+
+    syncPortfolioHomeCard();
     window.addEventListener("hashchange", renderFromLocation);
     window.addEventListener("popstate", renderFromLocation);
     renderFromLocation();
