@@ -14,12 +14,21 @@ const scripts = [...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].map((
 const mismatches = [];
 const checks = {};
 
-// Legacy ETF/valuation/low-PE adapters remain archives. The new Quant × Trend
-// adapter is intentionally optional and starts as a null placeholder; it is
-// the only data/app script allowed to be loaded by index.html.
+// Legacy ETF/valuation/low-PE adapters remain archives. Quant × Trend is an
+// optional null-safe adapter, while the portfolio comparison and price-tracker
+// adapters are active page inputs. Cache-busting query strings do not change
+// the adapter identity.
+const allowedAppAdapters = new Set([
+  'data/app/quant-trend-snapshot.js',
+  'data/app/portfolio-comparison-data.js',
+  'data/app/portfolio-price-data.js',
+  'data/app/portfolio-price-data-excel-update.js',
+  'data/app/portfolio-tracker-2024.js',
+  'data/app/portfolio-tracker-excel-raw.js'
+]);
 const unexpectedAppAdapter = [...html.matchAll(/\bsrc\s*=\s*["'](data\/app\/[^"']+)["']/g)]
   .map((match) => match[1])
-  .filter((source) => source !== 'data/app/quant-trend-snapshot.js');
+  .filter((source) => !allowedAppAdapters.has(source.split('?')[0]));
 if (unexpectedAppAdapter.length) {
   mismatches.push(`index.html이 승인되지 않은 data/app 어댑터를 자동 로드하고 있습니다: ${unexpectedAppAdapter.join(', ')}`);
 }
