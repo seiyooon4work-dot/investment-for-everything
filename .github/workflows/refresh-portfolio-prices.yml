@@ -1,0 +1,48 @@
+name: Refresh portfolio tracker prices
+
+on:
+  schedule:
+    # 22:30 UTC = U.S. market close + buffer in both EST and EDT.
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portfolio-price-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the default branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Append verified daily closes
+        run: node scripts/refresh-portfolio-tracker-prices.js
+
+      - name: Validate app data
+        run: |
+          node data/checks/validate-data.js
+          node data/checks/check-source-drift.js
+
+      - name: Commit a new trading day when available
+        run: |
+          if git diff --quiet -- data/app/portfolio-tracker-excel-raw.js; then
+            echo "No fully covered trading day to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/app/portfolio-tracker-excel-raw.js
+          git commit -m "chore: refresh portfolio tracker prices"
+          git push
