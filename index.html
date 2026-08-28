@@ -194,6 +194,23 @@
       letter-spacing: -.04em;
     }
 
+    .hero-stat-link {
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+    }
+
+    .hero-stat-link:hover {
+      border-color: #b89be8;
+      box-shadow: 0 5px 13px rgba(78, 38, 131, .08);
+      transform: translateY(-1px);
+    }
+
+    .hero-stat-link:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+    }
+
     .hero-aside {
       padding: 21px 22px 20px;
       background: linear-gradient(145deg, #f5efff, #ffffff);
@@ -1857,7 +1874,7 @@
             <h1 id="home-title">Investment for Everything</h1>
             <p class="hero-lead">지금까지 만든 주식 분석을 한곳에 모으는 첫 화면입니다. 항목을 선택하면 각 분석이 원래의 리포트 흐름으로 열립니다.</p>
             <div class="hero-stat-row" aria-label="분석 구성 요약">
-              <span class="hero-stat"><strong>08</strong>분석 경로</span>
+              <a class="hero-stat hero-stat-link" href="#analysis-grid" aria-label="8개 분석 경로로 이동"><strong>08</strong>분석 경로</a>
               <span class="hero-stat"><strong>24</strong>계산 가능 ETF</span>
               <span class="hero-stat"><strong>∞</strong>직접 기록</span>
             </div>
